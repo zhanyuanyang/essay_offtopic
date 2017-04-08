@@ -1,0 +1,6 @@
+CC 连词 and, or,but, if, while,although
+IN 介词 on, of,at, with,by,into, under
+WDT Wh限定词 who,which,when,what,where,how
+WP WH代词 that what whatever
+WP$ WH代词所有格 whose
+WRB WH副词

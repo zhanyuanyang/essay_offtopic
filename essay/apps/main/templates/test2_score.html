@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>朴素贝叶斯评分测试页面</title>
+</head>
+<body>
+<h2>朴素贝叶斯评分测试页面</h2>
+<form action="{% url 'login:score' %}" method="post">
+    {% csrf_token %}
+    title:<input type="text" name="t1">
+    content:<input type="text" name="t2">
+    <input type="submit" value="提交">
+
+</form>
+
+
+<h1>Score:{{score}}</h1>
+</body>
+</html>

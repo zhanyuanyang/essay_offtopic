@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有监督跑题测试页面</title>
+</head>
+<body>
+<h2>有监督跑题测试页面:</h2>
+<form action="{% url 'login:detect2' %}" method="post">
+    {% csrf_token %}
+    title:<input type="text" name="t1">
+    content:<input type="text" name="t2">
+    <input type="submit" value="提交">
+
+</form>
+
+
+<h1>检测结果:{{result}}</h1>
+</body>
+</html>

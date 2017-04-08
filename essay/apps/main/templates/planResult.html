@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>英语作文跑题检测系统</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/planResult.css' %}">
+	<script type="text/javascript" src="{% static 'login/js/echarts.js' %}"></script>
+	<script type="text/javascript" src="{% static 'login/js/planResult.js' %}"></script>
+</head>
+<body>
+	<div id="logo"><a href="{% url 'login:main' %}"></a></div>
+	<div id="namebox">{{actual_name}}</div>
+	<div id="exitbox"><a href="{% url 'login:logout' %}"></a></div>
+
+	<div class="resbody">
+		<div id="OriginalTextBox">
+			<div class="back" onclick="result_back();"></div>
+			<div class="middleBox">
+				<p>作文原文:</p>
+				<div id="formertext"></div>
+                <div id="showMagic"></div>
+			</div>
+			<div class="resBox">
+				<span style="display:block;border-bottom:1px black solid;font-size:28px;">检测结果：</span>
+				<span>是否离题：</span><span id="excursion">{{ isOffTopic }}</span><br/>
+				<span>评分：</span><span id="score">{{ score }}</span><br/>
+				<!--<span>排名：</span><span id="rank">15</span><span>/45</span><br/>-->
+
+                <span>评语:</span><span id="comment">{{ feedback }}</span>
+			</div>
+		</div>
+		<div id="resultBox">
+			
+		<!-- 结果转换窗口 -->
+		<div id="resultContainer">
+			<ul id="RContainerHead">
+				<li class="active">图表分析</li><li>详细错误</li>
+			</ul>
+        <div id="total_chart">
+			 <div id="chart2"></div>
+			<div id="chart"></div>
+
+
+            
+        </div>
+        <div id="detail_error">
+            <table id="error_table">
+				<!-- <tr>
+                    <td>错误错误错误错误test</td>
+                    <td>形容词错误</td>
+                </tr>-->
+				<tr>
+					<th>ID</th>
+					<th>位置</th>
+					<th>提示</th>
+				</tr>
+            </table>
+        </div>
+
+		</div>
+
+		</div>
+		<p class="copyRight">Copyright 2017 All rights reserved.</p>
+	</div>
+
+	<!--详细错误接收-->
+	<script type="text/javascript">
+  		var detail = {{ detail|safe }};
+  		<!--console.log(detail);-->
+  		var content = {{ content|safe }};
+  		<!--console.log(content) ;-->
+  		var errors = {{ errors|safe }};
+  		<!--console.log(errors);-->
+  	</script>
+
+
+
+
+
+<!--图表结果-->
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chart'));
+
+        
+        var chart1 = {{ chart1|safe }};
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '错误统计',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data: ["动词","名词","形容词","副词","介词","情态动词","其他"]
+    },
+    series : [
+        {
+            name: '图表意思',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:chart1.动词, name:"动词"},
+                {value:chart1.名词, name:"名词"},
+                {value:chart1.形容词, name:"形容词"},
+                {value:chart1.副词, name:"副词"},
+                {value:chart1.介词, name:"介词"},
+                {value:chart1.情态动词, name:"情态动词"},
+                {value:chart1.其他, name:"其他类型"},
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+        //第二个图表
+        // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('chart2'));
+
+        //定义Json字符串
+        // var myJSONChart2 = '{"chart2":[{"动词":50,"名词":10,"形容词":20,"副词":0,"介词":0,"情态动词":0}]}';
+
+        // //解析JSON的值
+        // var jsonC2 = JSON.parse(myJSONChart2);
+        // var verbNum = jsonC2.chart2[0].动词;
+        // var NounNum = jsonC2.chart2[0].名词;
+        // var adjNum = jsonC2.chart2[0].形容词;
+        // var advNum = jsonC2.chart2[0].副词;
+        // var prepNum = jsonC2.chart2[0].介词;
+
+
+        var chart2 = {{ chart2|safe }};
+
+        // 指定图表的配置项和数据
+        var option2 = {
+            title: {
+                text: '词汇类型'
+            },
+            tooltip: {},
+            xAxis: {
+                data: ["动词", "名词", "形容词", "副词", "介词", "情态动词", "其他"]
+            },
+            yAxis: {},
+            series: [{
+                name: '数量',
+                type: 'bar',
+                data: [chart2.动词, chart2.名词, chart2.形容词, chart2.副词,chart2.介词,chart2.情态动词,chart2.其他]
+                //data: [5, 2, 18, 10,2,5,9]
+            }],
+
+            itemStyle: {
+                normal: {
+　　　　　　　　　　//定义一个list，然后根据所以取得不同的值，这样就实现了，
+                    color: function(params) {
+                    // build a color map as your need.
+                    var colorList = [
+                    '#C1232B','#B5C334','#FCCE10','#E87C25','#26C0C0','#3B054D','#0F71E3'
+                    ];
+                    return colorList[params.dataIndex]
+                        }
+                    }
+                }
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+
+        
+    </script>
+</body>
+</html>
