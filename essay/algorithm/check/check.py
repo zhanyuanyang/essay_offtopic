@@ -1,6 +1,6 @@
 #coding=utf-8
 import nltk
-import language_check
+# import language_check
 from string import punctuation
 from nltk.tokenize import word_tokenize
 import os

@@ -50,7 +50,7 @@
 						<th>类型</th>
 						<th>题目</th>
 						<th>写作时间</th>
-						<th>操作</th>
+						<th align=center colspan='2'>操作</th>
 					</tr>
 					{% for i in essaylist %}
 					<tr>
@@ -59,7 +59,8 @@
 						<td>{{i.2}}</td>
 						<td>{{i.3}}</td>
 						{% if i.4 %}
-							<td><a href="{% url 'login:catEssay' %}?type=AT&id={{i.0}}">查看</a></td>
+							<td><a href="{% url 'login:history_result' %}?type=AT&id={{i.0}}">查看</a></td>
+                            <td><a href="{% url 'login:intermediateResults' %}?type=AT&id={{i.0}}">中间结果</a></td>
 						{% else %}
 							<td><a href="{% url 'login:write_historyEssay' %}?type=PL&id={{i.0}}">写作</a></td>
 						{% endif %}

@@ -12,11 +12,11 @@ from KeyWord.TextRank4ZH.textrank4zh import TextRank4Keyword, TextRank4Sentence
 
 
 class Detector:
-    # model = gensim.models.Word2Vec.load_word2vec_format("algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector", binary=False)
+    model = gensim.models.Word2Vec.load_word2vec_format("algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector", binary=False)
     def __init__(self,title):
         self.title = title
         #载入模型
-        self.model = gensim.models.Word2Vec.load_word2vec_format("algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector", binary=False)
+        # self.model = gensim.models.Word2Vec.load_word2vec_format("algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector", binary=False)
         print 'model loaded!'
         # 预处理题目
         self.title_list = preprocessTitle(self.title)

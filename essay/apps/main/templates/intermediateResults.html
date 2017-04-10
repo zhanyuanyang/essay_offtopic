@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>英语作文跑题检测系统</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/planResult.css' %}">
+    <script type="text/javascript" src="{% static 'login/js/echarts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'login/js/planResult.js' %}"></script>
+</head>
+<body>
+<div id="logo"><a href="{% url 'login:main' %}"></a></div>
+<div id="namebox">{{actual_name}}</div>
+<div id="exitbox"><a href="{% url 'login:logout' %}"></a></div>
+
+<div class="resbody">
+    <div id="OriginalTextBox">
+        <div class="back" onclick="result_back();"></div>
+        <div class="middleBox">
+            <p>作文标题:{{title}}</p>
+            <div id="formertext"></div>
+            <div id="showMagic"></div>
+        </div>
+        <div class="resBox">
+            <span style="display:block;border-bottom:1px black solid;font-size:28px;">参数选择：</span>
+            <br>
+            关键词提取方法：
+            <br><br>
+            <select>
+                <option value="2017">LDA</option>
+                <option value="2016">TextRank</option>
+            </select>
+            <br><br>
+            <span>阈值:</span>
+            <br><br>
+            <span><input type="text" placeholder="0~1之间的小数" name="Threshold"></span>
+            <br><br>
+            <button type="submit">确认</button>
+            <br><br>
+            ------------------
+            <br>
+            算法结果
+            <br>
+            文章与题目的相似度：
+            <input type="text" placeholder="此处输出一个0~1的值" name="Threshold">
+        </div>
+    </div>
+    <div id="resultBox">
+
+        <!-- 结果转换窗口 -->
+        <div id="resultContainer">
+            <ul id="RContainerHead">
+            </ul>
+        </div>
+    </div>
+    <p class="copyRight">Copyright 2017 All rights reserved.</p>
+</div>
+
+<!--详细错误接收-->
+<script type="text/javascript">
+  		var detail = {{ detail|safe }};
+  		<!--console.log(detail);-->
+  		var content = {{ content|safe }};
+  		<!--console.log(content) ;-->
+  		var errors = {{ errors|safe }};
+  		<!--console.log(errors);-->
+
+</script>
+
+</body>
+</html>
