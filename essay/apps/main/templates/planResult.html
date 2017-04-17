@@ -17,14 +17,19 @@
 		<div id="OriginalTextBox">
 			<div class="back" onclick="result_back();"></div>
 			<div class="middleBox">
-				<p>作文标题:{{title}}</p>
+				题目：<div  class="mytitle">{{title}}</div><br />
+				类型：<div class="mytype">{{type}}</div>
+				<p>作文原文:</p>
 				<div id="formertext"></div>
                 <div id="showMagic"></div>
 			</div>
 			<div class="resBox">
 				<span style="display:block;border-bottom:1px black solid;font-size:28px;">检测结果：</span>
 				<span>是否离题：</span><span id="excursion">{{ isOffTopic }}</span><br/>
-				<span>评分：</span><span id="score">{{ score }}</span><br/>
+				{% if score == 0 %}
+				{% else %}
+				<span>评分：</span><span id="score">{{ score }}档作文</span><br/>
+				{% endif %}
 				<!--<span>排名：</span><span id="rank">15</span><span>/45</span><br/>-->
 
                 <span>评语:</span><span id="comment">{{ feedback }}</span>
