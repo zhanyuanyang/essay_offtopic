@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f3bb1f3-893a-4ed1-847e-599ce08238ff" name="Default" comment="" />
+    <list default="true" id="6f3bb1f3-893a-4ed1-847e-599ce08238ff" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/NBscore/Score.py" afterPath="$PROJECT_DIR$/algorithm/NBscore/Score.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/OffTopic/Detection.py" afterPath="$PROJECT_DIR$/algorithm/OffTopic/Detection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/main/static/login/css/planResult.css" afterPath="$PROJECT_DIR$/apps/main/static/login/css/planResult.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/main/templates/planResult.html" afterPath="$PROJECT_DIR$/apps/main/templates/planResult.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/main/views.py" afterPath="$PROJECT_DIR$/apps/main/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,26 +26,37 @@
     <favorites_list name="essay" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/main/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+              <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding>
                 <element signature="e#15#47#0" expanded="true" />
-                <marker date="1491834046661" expanded="true" signature="84:1292" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Detection.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/algorithm/OffTopic/Detection.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-              <folding />
+            <state relative-caret-position="302">
+              <caret line="398" column="28" lean-forward="false" selection-start-line="398" selection-start-column="28" selection-end-line="398" selection-end-column="28" />
+              <folding>
+                <element signature="e#23#62#0" expanded="true" />
+                <element signature="e#1476#1944#0" expanded="false" />
+                <element signature="e#2109#3938#0" expanded="false" />
+                <element signature="e#3993#5582#0" expanded="false" />
+                <element signature="e#5634#9232#0" expanded="false" />
+                <element signature="e#9279#13399#0" expanded="false" />
+                <element signature="e#13444#14766#0" expanded="false" />
+                <element signature="e#14816#15880#0" expanded="false" />
+                <element signature="e#15929#16469#0" expanded="false" />
+                <element signature="e#16594#17150#0" expanded="false" />
+                <element signature="e#17182#19392#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,6 +105,15 @@
       <find>essaylist</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -110,7 +139,6 @@
         <option value="$PROJECT_DIR$/apps/main/templates/test3_detect2.html" />
         <option value="$PROJECT_DIR$/apps/main/templates/test1_detect.html" />
         <option value="$PROJECT_DIR$/apps/main/templates/test2_score.html" />
-        <option value="$PROJECT_DIR$/algorithm/NBscore/Score.py" />
         <option value="$PROJECT_DIR$/apps/main/check.py" />
         <option value="$PROJECT_DIR$/apps/main/templates/Login&amp;Register.html" />
         <option value="$PROJECT_DIR$/apps/main/static/login/js/calendar.js" />
@@ -119,7 +147,6 @@
         <option value="$PROJECT_DIR$/algorithm/supervised/Offtopic.py" />
         <option value="$PROJECT_DIR$/apps/main/static/login/js/planResult.js" />
         <option value="$PROJECT_DIR$/apps/main/static/login/js/selfWrite.js" />
-        <option value="$PROJECT_DIR$/apps/main/static/login/css/planResult.css" />
         <option value="$PROJECT_DIR$/apps/main/static/login/js/planWrite.js" />
         <option value="$PROJECT_DIR$/essay/settings.py" />
         <option value="$PROJECT_DIR$/apps/main/templates/planWrite.html" />
@@ -128,13 +155,15 @@
         <option value="$PROJECT_DIR$/algorithm/check/check.py" />
         <option value="$PROJECT_DIR$/algorithm/OffTopic/README.txt" />
         <option value="$PROJECT_DIR$/apps/main/templates/calendar.html" />
-        <option value="$PROJECT_DIR$/apps/main/templates/planResult.html" />
         <option value="$PROJECT_DIR$/apps/main/templates/IntermediateResults.html" />
         <option value="$PROJECT_DIR$/apps/main/urls.py" />
-        <option value="$PROJECT_DIR$/apps/main/views.py" />
         <option value="$PROJECT_DIR$/apps/main/templates/intermediateResults.html" />
         <option value="$PROJECT_DIR$/apps/main/templates/myhistory.html" />
         <option value="$PROJECT_DIR$/algorithm/OffTopic/Detection.py" />
+        <option value="$PROJECT_DIR$/apps/main/templates/planResult.html" />
+        <option value="$PROJECT_DIR$/algorithm/NBscore/Score.py" />
+        <option value="$PROJECT_DIR$/apps/main/static/login/css/planResult.css" />
+        <option value="$PROJECT_DIR$/apps/main/views.py" />
       </list>
     </option>
   </component>
@@ -144,6 +173,7 @@
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -182,86 +212,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="essay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -347,26 +297,26 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/algorithm/check" />
-      <recent name="$PROJECT_DIR$/apps/main/static/login" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\django\essay_offtopic\essay_offtopic\essay\algorithm\OffTopic\TitleExpanding\word2vec" />
       <recent name="$PROJECT_DIR$/apps/main/static/login/css" />
       <recent name="$PROJECT_DIR$/apps/main" />
       <recent name="$PROJECT_DIR$/apps/main/templates" />
       <recent name="F:\essay\apps\main\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/algorithm/check" />
+      <recent name="$PROJECT_DIR$/apps/main/static/login" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -650,19 +600,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19062027" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20272315" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29575163" sideWeight="0.50680786" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.49380055" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29575163" sideWeight="0.49319214" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29459903" sideWeight="0.49319214" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3218274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50727654" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207856" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5057283" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -671,6 +620,32 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -699,18 +674,11 @@
           <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="57" />
+      <option name="time" value="64" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apps/main/templates/test3_detect2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/main/templates/planResult111.html" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/django/urls/resolvers.py" />
     <entry file="file://$PROJECT_DIR$/apps/main/static/login/jpg/962bd40735fae6cd14c0ea210fb30f2442a70f7d.jpg">
@@ -784,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/main/static/login/css/planResult.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6048">
-          <caret line="288" column="22" lean-forward="false" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/nltk/tag/__init__.py" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/nltk/__init__.py" />
     <entry file="file://$PROJECT_DIR$/apps/main/static/login/css/planWrite.css">
@@ -821,24 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/NBscore/Score.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/essay/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -859,7 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-75">
           <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="20" column="65" lean-forward="true" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1240">
           <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="38" lean-forward="true" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13957">
           <caret line="13" column="611" lean-forward="false" selection-start-line="13" selection-start-column="611" selection-end-line="13" selection-end-column="611" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1362249">
           <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="199" column="23" lean-forward="false" selection-start-line="199" selection-start-column="11" selection-end-line="199" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -923,7 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -931,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -939,7 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="107" column="52" lean-forward="false" selection-start-line="107" selection-start-column="52" selection-end-line="107" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -947,7 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="62" column="112" lean-forward="false" selection-start-line="62" selection-start-column="112" selection-end-line="62" selection-end-column="112" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,7 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
           <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -963,60 +897,100 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/OffTopic/TitleExpanding/word2vec/wiki.en.text_50.vector">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../项目文件/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="403" column="22" lean-forward="false" selection-start-line="403" selection-start-column="22" selection-end-line="403" selection-end-column="22" />
+          <folding>
+            <element signature="e#562#826#0" expanded="false" />
+            <element signature="e#859#1124#0" expanded="false" />
+            <element signature="e#1160#1428#0" expanded="false" />
+            <element signature="e#1465#1933#0" expanded="false" />
+            <element signature="e#1976#2050#0" expanded="false" />
+            <element signature="e#2102#3912#0" expanded="false" />
+            <element signature="e#3960#5513#0" expanded="false" />
+            <element signature="e#5564#9131#0" expanded="false" />
+            <element signature="e#9178#13289#0" expanded="false" />
+            <element signature="e#13327#14618#0" expanded="false" />
+            <element signature="e#14665#15206#0" expanded="false" />
+            <element signature="e#15240#15284#0" expanded="false" />
+            <element signature="e#15330#15886#0" expanded="false" />
+            <element signature="e#15918#18127#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/main/templates/planResult.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="24" column="92" lean-forward="true" selection-start-line="24" selection-start-column="92" selection-end-line="24" selection-end-column="92" />
+        <state relative-caret-position="260">
+          <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/main/static/login/css/planResult.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="334" column="16" lean-forward="true" selection-start-line="334" selection-start-column="16" selection-end-line="334" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/main/views.py">
+    <entry file="file://$PROJECT_DIR$/algorithm/NBscore/Score.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#562#830#0" expanded="false" />
-            <element signature="e#865#1130#0" expanded="false" />
-            <element signature="e#1168#1437#0" expanded="false" />
-            <element signature="e#1476#1944#0" expanded="false" />
-            <element signature="e#1985#2055#0" expanded="false" />
-            <element signature="e#2109#3938#0" expanded="false" />
-            <element signature="e#3993#5346#0" expanded="false" />
-            <element signature="e#5398#8851#0" expanded="false" />
-            <element signature="e#8898#12790#0" expanded="false" />
-            <element signature="e#12835#13890#0" expanded="false" />
-            <element signature="e#15053#15593#0" expanded="false" />
-            <element signature="e#15627#15672#0" expanded="false" />
-            <element signature="e#15718#16274#0" expanded="false" />
-            <element signature="e#16306#18516#0" expanded="false" />
-            <element signature="e#18559#19165#0" expanded="false" />
-            <element signature="e#20073#20227#0" expanded="false" />
-            <element signature="e#20229#20238#0" expanded="false" />
-          </folding>
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/OffTopic/Detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/main/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
             <element signature="e#15#47#0" expanded="true" />
-            <marker date="1491834046661" expanded="true" signature="84:1292" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/OffTopic/Detection.py">
+    <entry file="file://$PROJECT_DIR$/apps/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="302">
+          <caret line="398" column="28" lean-forward="false" selection-start-line="398" selection-start-column="28" selection-end-line="398" selection-end-column="28" />
+          <folding>
+            <element signature="e#23#62#0" expanded="true" />
+            <element signature="e#1476#1944#0" expanded="false" />
+            <element signature="e#2109#3938#0" expanded="false" />
+            <element signature="e#3993#5582#0" expanded="false" />
+            <element signature="e#5634#9232#0" expanded="false" />
+            <element signature="e#9279#13399#0" expanded="false" />
+            <element signature="e#13444#14766#0" expanded="false" />
+            <element signature="e#14816#15880#0" expanded="false" />
+            <element signature="e#15929#16469#0" expanded="false" />
+            <element signature="e#16594#17150#0" expanded="false" />
+            <element signature="e#17182#19392#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

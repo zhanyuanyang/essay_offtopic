@@ -2,11 +2,13 @@
 from sklearn.externals import joblib
 import os
 
+
 class Score:
-    def __init__(self,title=0):
+    def __init__(self, title=0):
         self.title = title
-        self.target_names = ['a','b','c']
-    def run(self,text):
+        self.target_names = ['1', '2', '3']
+
+    def run(self, text):
         if self.title == 1:
             result = self.GlobalWater(text)
             return result
@@ -14,20 +16,19 @@ class Score:
             result = self.HasteWaste(text)
             return result
 
-
-    def GlobalWater(self,text):
-        countVec = joblib.load(os.getcwd()+'/algorithm/NBscore/GWscore_count.pkl')
-        Tfidf = joblib.load(os.getcwd()+'/algorithm/NBscore/GWscore_tfidf.pkl')
-        Model = joblib.load(os.getcwd()+'/algorithm/NBscore/GWscore_model.pkl')
+    def GlobalWater(self, text):
+        countVec = joblib.load(os.getcwd() + '/algorithm/NBscore/GWscore_count.pkl')
+        Tfidf = joblib.load(os.getcwd() + '/algorithm/NBscore/GWscore_tfidf.pkl')
+        Model = joblib.load(os.getcwd() + '/algorithm/NBscore/GWscore_model.pkl')
         x_count = countVec.transform(text)
         x_tfidf = Tfidf.transform(x_count)
         predict = Model.predict(x_tfidf)
         return self.target_names[int(predict)]
 
-    def HasteWaste(self,text):
-        countVec = joblib.load(os.getcwd()+'/algorithm/NBscore/HWscore_count.pkl')
-        Tfidf = joblib.load(os.getcwd()+'/algorithm/NBscore/HWscore_tfidf.pkl')
-        Model = joblib.load(os.getcwd()+'/algorithm/NBscore/HWscore_model.pkl')
+    def HasteWaste(self, text):
+        countVec = joblib.load(os.getcwd() + '/algorithm/NBscore/HWscore_count.pkl')
+        Tfidf = joblib.load(os.getcwd() + '/algorithm/NBscore/HWscore_tfidf.pkl')
+        Model = joblib.load(os.getcwd() + '/algorithm/NBscore/HWscore_model.pkl')
         x_count = countVec.transform(text)
         x_tfidf = Tfidf.transform(x_count)
         predict = Model.predict(x_tfidf)
@@ -43,4 +44,3 @@ if __name__ == '__main__':
     test = Score()
     print test.run(text1)
     del test
-

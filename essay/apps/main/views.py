@@ -159,12 +159,21 @@ def calendar_result(request):
     result['feedback'] = report.feedback
     result['actual_name'] = request.session['actual_name']
     # 添加标题
-    result['title'] = record.user_title;
+    # TODO:修改时间0408
+    # 传回标题和类型以显示
+    # 无监督评分为0，传回给前端用于显示
+    result['title'] = record.user_title
+    if essay.type == "AT":
+        result['type'] = "自主学习"
+        result['score'] = 0
+    elif essay.type == "PL":
+        result['type'] = "计划学习"
 
     if detect_result == True:
         result['isOffTopic'] = "切题"
     elif detect_result == False:
         result['isOffTopic'] = "跑题"
+        result['score'] = 0
 
     # 传入内容渲染
     dict = {}
@@ -221,6 +230,11 @@ def saveUnsuperviesd(request):
             result['detail'] = json.dumps(detail)
             result['feedback'] = check.getFeedback(content)
             result['actual_name'] = request.session['actual_name']
+            # 传回题目和类型
+            result['title'] = title
+            result['type'] = "自主学习"
+            # 无监督没有评分
+            result['score'] = 0
             # TODO:排名
             user.exp = user.exp + 10
             user.save()
@@ -237,7 +251,7 @@ def saveUnsuperviesd(request):
                 result['isOffTopic'] = "切题"
                 boolean_value = True
 
-            result['score'] = 'no'
+            result['score'] = 0
 
             Report.objects.get_or_create(user_id=user, essay_id=essay, error=result['errors'], chart1=result['chart1'],
                                          chart2=result['chart2'], detail=result['detail'], isOffTopic=boolean_value,
@@ -315,6 +329,10 @@ def saveEssay(request):
             result['detail'] = json.dumps(detail)
             result['feedback'] = check.getFeedback(content)
             result['actual_name'] = request.session['actual_name']
+            # 传回标题和类型以显示
+            useressay = User_Essay.objects.filter(user_id=user, essay_id=essay)
+            result['title'] = useressay.user_title
+            result['type'] = "计划学习"
             # TODO:排名
             #
             # TODO:经验值
@@ -345,6 +363,7 @@ def saveEssay(request):
                 temp = True
             elif detect_result == 'false':
                 result['isOffTopic'] = "跑题"
+                result['score'] = 0
                 temp = False
             Report.objects.get_or_create(user_id=user, essay_id=essay, error=result['errors'], chart1=result['chart1'],
                                          chart2=result['chart2'], detail=result['detail'], isOffTopic=temp,
@@ -394,7 +413,14 @@ def history_result(request):
     detect_result = report.isOffTopic
     result['feedback'] = report.feedback
     # 添加标题
-    result['title'] = record.user_title;
+    # 传回标题和类型以显示;无监督评分为0
+    result['title'] = record.user_title
+    selected_essay = Essay.objects.get(id=essay)
+    if selected_essay.type == "AT":
+        result['type'] = "自主学习"
+        result['score'] = 0
+    elif selected_essay.type == "PL":
+        result['type'] = "计划学习"
 
     if detect_result == True:
         result['isOffTopic'] = "切题"
@@ -413,6 +439,7 @@ def history_result(request):
         result['isOffTopic'] = "切题"
     else:
         result['isOffTopic'] = "跑题"
+        result['score'] = 0
 
     return render(request, 'planResult.html', result)
 
