@@ -19,6 +19,7 @@ from apps import main
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^main/', include('apps.main.urls', namespace='login')),
+    url(r'^teacher/', include('apps.teacher.urls', namespace='teacher')),
     # url(r'^score/',views.score),
     # url(r'detect/',views.detect),
     # url(r'^$', views.home, name='home'),

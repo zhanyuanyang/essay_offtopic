@@ -3,13 +3,14 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>英语作文跑题检测系统</title>
-	<link rel="stylesheet" type="text/css" href="css/teacherPage.css">
-	<script type="text/javascript" src="js/teacherPage.js"></script>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/teacherPage.css' %}">
+	<script type="text/javascript" src="{% static 'js/teacherPage.js' %}"></script>
 </head>
 <body>
 	<div id="logo"></div>
-	<div id="namebox">XXX</div>
-	<div id="exitbox"><a></a></div>
+	<div id="namebox">{{name}}</div>
+	<div id="exitbox"><a href="{% url 'teacher:exit' %}"></a></div>
 
 	<div class="outerContainer">
 		<div id="hidebg"></div>
@@ -29,24 +30,21 @@
 			</div>
 			<div class="top_right">
 				<span>作文发布</span>
-				<form>
+				<form method="post" action="{% url 'teacher:essayRelease' %}">
+					<input type="radio" name="type" class="radio" onclick="showSelection();" checked="checked" value="PL">题库
+					<input type="radio" name="type" onclick="showText();" value="AT">自选<br/>
 					<span>作文标题：</span>
-					<input type="text" class="teacherText" id="showT">
-					<select class="teacherSelect" id="showS">
-						<option>The water is important</option>
-						<option>AAA</option>
-						<option>AAA</option>
-						<option>AAA</option>
-						<option>AAA</option>
-						<option>AAA</option>
+					<input type="text" class="teacherText" id="showT" name="title">
+					<select class="teacherSelect" id="showS" name="title">
+						{% for i in trainedTopics_list %}
+							<option>{{i.trainedTopics}}</option>
+						{% endfor %}
 					</select><br />
-					<input type="radio" name="type" class="radio" onclick="showSelection();" checked="checked">题库
-					<input type="radio" name="type" onclick="showText();">自选<br/>
 
 					<span>要求：</span>
-					<textarea required class="theRequire"></textarea><br/>
+					<textarea required class="theRequire" name="description"></textarea><br/>
 					<span>截止时间：</span>
-					<input type="date" class="smallCalendar"><br/>
+					<input type="date" class="smallCalendar" name="due_time"><br/>
 					<input type="submit" class="submit" value="确认发布">
 				</form>
 			</div>
@@ -85,7 +83,7 @@
 				<td><input type="text"></td>
 			</tr>
 			<tr>
-				<td>修改密码&nbsp<a onclick="showtmodifyPsw();" id="pwdBox"><img src="img/Calendar/down.png"></a></td>
+				<td>修改密码&nbsp<a onclick="showtmodifyPsw();" id="pwdBox"><img src="{% static 'img/Calendar/down.png' %}"></a></td>
 				<td></td>
 			</tr>
 			<tr>

@@ -529,6 +529,7 @@ def main(request):
     user = ''
     query = ''
     if request.session.get('user_id'):
+        print request.session.get('user_id')
         query = User.objects.get(user_id=request.session.get('user_id'))
         user = User.objects.filter(user_id=query.user_id)
     else:
