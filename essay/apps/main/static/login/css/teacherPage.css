@@ -1,0 +1,401 @@
+*{margin:0;padding:0;}
+
+#logo{
+	width: 280px;
+	height: 36px;
+	margin-left: 570px;
+	margin-top: 5px;
+	display: inline-block;
+	background-image: url(../img/Calendar/logo.png);
+	background-repeat: no-repeat;
+}
+
+#namebox{
+	width: 100px;
+	height: 15px;
+	display: block;
+	margin-left: 900px;
+	margin-top: -30px;
+	text-align: right;
+	line-height: 15px; 
+}
+
+#exitbox{
+	width: 15px;
+	height: 15px;
+	display: block;
+	margin-left: 1020px;
+	margin-top: -15px;
+}
+
+#exitbox a{
+	width: 15px;
+	height: 15px;
+	display: block;
+	background-image: url(../img/Calendar/exit.png);
+}
+
+#exitbox a:hover{
+	background-image: url(../img/Calendar/exit_click.png);
+	cursor: pointer;
+}
+
+.outerContainer{
+	width: 99.7%;
+	height: auto;
+	margin-top: 15px;
+	background-color: #EBEBEB;
+	border:#EBEBEB 2px solid;
+}
+
+.outerContainer p{
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 10px;
+}
+
+.top{
+	width: 1000px;
+	height: auto;
+	margin-left: 220px;
+	margin-top: 5px;
+}
+
+.top_left{
+	width: 150px;
+	height: 310px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #EBEBEB;
+	float: left;
+}
+
+.teacherBox{
+	width: 130px;
+	height: 250px;
+	border:1px white solid;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+
+.teacherPicBox{
+	width: 110px;
+	height: 110px;
+	border:1px solid black;
+	border-radius: 50%;
+	margin-left: 8px;
+}
+
+.personalInfor{
+	width: 100px;
+	height: 20px;
+	margin-left: 15px;
+	margin-top: 10px;
+	border-radius: 10px;
+	border:none;
+	background-image: url(../img/teacherPage/management.png);
+	color: white;
+}
+
+.personalInfor:hover{
+	box-shadow: 0px 0px 25px #0ED0F2;
+	cursor: pointer;
+}
+
+.studentManage{
+	width: 100px;
+	height: 20px;
+	margin-left: 15px;
+	margin-top: 10px;
+	border-radius: 10px;
+	border:none;
+	background-image: url(../img/teacherPage/management.png);
+	color: white;	
+}
+
+.studentManage:hover{
+	box-shadow: 0px 0px 25px #0ED0F2;
+	cursor: pointer;
+}
+
+.top_right{
+	width: 800px;
+	height: 300px;
+	border-radius: 5px;
+	background-color: white;
+	border: 1px solid #EBEBEB;
+	display: inline-block;
+	margin-left: 3px;
+	padding-bottom: 10px;
+}
+
+.top_right span{
+	margin-left: 50px;
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.teacherText{
+	width: 445px;
+	height: 20px;
+	border-radius: 10px;
+	border:none;
+	border:1px solid #A9A9A9;
+	display: none;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.teacherText:hover{
+	border:1px solid #0ED0F2;
+	box-shadow: 0px 0px 5px #0ED0F2;
+}
+
+.teacherSelect{
+	width: 200px;
+	height: 20px;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+.teacherSelect:hover{
+	border:1px solid #0ED0F2;
+	box-shadow: 0px 0px 5px #0ED0F2;
+}
+
+.top_right form select{
+	margin-left: 10px;
+	margin-top: 20px;
+}
+
+.radio{
+	margin-top: 20px;
+	margin-left: 100px;
+}
+
+.theRequire{
+	width: 400px;
+	height: 80px;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+
+.theRequire:hover{
+	border:1px solid #0ED0F2;
+	box-shadow: 0px 0px 5px #0ED0F2;
+}
+
+.smallCalendar{
+	border-radius: 10px;
+	border:none;
+	border:1px solid #A9A9A9;
+	color: black;
+}
+
+.submit{
+	margin-top: 20px;
+	margin-left: 200px;
+	margin-bottom: 10px;
+	width: 110px;
+	height: 25px;
+	border-radius: 40px;
+	border:none;
+	color: white;
+	background-image: url(../img/teacherPage/confirm_teacher.png);
+}
+
+.submit:hover{
+	box-shadow: 0px 0px 25px #FE7865;
+	cursor: pointer;
+}
+
+.bottom{
+	width: 955px;
+	height: 100px;
+	border:1px #EBEBEB solid;
+	margin-left: 220px;
+	margin-top: 3px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.historyBody{
+	width: 900px;
+	height: 480px;
+	margin-left: 130px;
+}
+
+#hisBody{
+	width: 700px;
+	height: auto;
+	text-align: center;
+	border:#CECECE 1px solid;
+	border-radius: 10px;
+	margin-top:10px; 
+	table-layout: fixed;
+}
+#hisBody tr td,#hisBody tr th{
+    border-bottom: #CECECE 1px solid;
+    border-right: #CECECE 1px solid;
+    line-height: 25px;
+
+    text-overflow: ellipsis; /* for IE */  
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla,在chrome中测试也通过了*/  
+    overflow: hidden;  
+    white-space: nowrap;
+}
+
+#hisBody tr th:nth-child(1),#hisBody tr th:nth-child(2),
+#hisBody tr th:nth-child(4)#hisBody tr th:nth-child(5){
+	width: 100px;
+}
+
+#hisBody tr th:nth-child(3){
+	width: 250px;
+}
+
+#hisBody:last-child{
+	border-bottom: none;
+}
+#hisBody tr td:last-child,#hisBody tr th:last-child{
+	border-right: none;
+}
+
+#hisBody tr td:last-child a{
+	text-decoration: none;
+}
+
+#hisBody tr td:last-child a:hover{
+	color: #26B9F1;
+	text-decoration: underline;
+}
+
+
+/*修改头像好和密码弹窗*/
+#hidebg.parentNode{
+	z-index: -1;
+}
+
+#hidebg { 
+	left:0px;
+	top:0px;
+    width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+    height: 100%;
+    filter:alpha(opacity=70);  /*设置透明度为60%*/
+    opacity:0.7;  /*非IE浏览器下设置透明度为60%*/ 
+	background-color:white;
+	position:absolute;
+	z-index:1; 
+	display: none;
+}
+
+#timgA{
+	width: 110px;
+	height: 110px;
+	display: block;
+}
+.tmodify{
+	width: 550px;
+	height: 280px;
+	border: #18CCFC 1px solid;
+	margin-left: 450px; 
+	border-radius: 20px;
+	box-shadow: 0px 0px 25px #18CCFC;
+	margin-top: -480px;
+	z-index: 99;
+	background-color: white;
+	position: relative;
+	display: none;
+}
+
+#tmodify_back a{
+	width: 23px;
+	height: 23px;
+	background-image: url(../img/Calendar/X.png);
+	background-color: #18CCFC;
+	border-radius: 50%;
+	margin-left: 510px;
+	margin-top: 10px;
+	display: block;
+}
+
+#tmodify_back a:hover{
+	cursor: pointer;
+	box-shadow: 0px 0px 25px #18CCFC;
+}
+
+
+#tmodifyTable{
+	width: 500px;
+	height: auto;
+	margin-top: 10px;
+	margin-left:20px;
+	padding-bottom: 10px; 
+	table-layout: fixed;
+}
+
+#tmodifyTable input{
+	width: 200px;
+	height: 25px;
+	border:2px #EBEBEB solid;
+	border-radius: 20px;
+}
+
+#tmodifyTable input:hover{
+	border:2px #18CCFC solid;
+}
+
+#tmodifyTable button{
+	width: 60px;
+	color: black;
+	border:2px #18CCFC solid;
+	border-radius: 5px;
+	margin-left: 5px;
+	background-color: #18CCFC;
+	color: white;
+}
+
+#tmodifyTable button:hover{
+	cursor: pointer;
+	box-shadow: 0px 0px 25px #18CCFC;
+}
+
+#tmodifyTable tr td:nth-child(1){
+	width: 90px;
+}
+
+#tmodifyTable tr td:nth-child(2){
+	width: 120px;
+}
+
+#tmodifyTable tr:nth-child(3),#tmodifyTable tr:nth-child(4),#tmodifyTable tr:nth-child(5){
+	display:none;
+}
+
+#pwdBox:hover{
+	cursor: pointer;
+}
+
+#tmodifyPic{
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	border:black 1px solid;
+	margin-top: 10px;
+}
+
+#tmodifySub{
+	background-color: #18CCFC;
+	color: white;
+}
+
+#tmodifySub:hover{
+	box-shadow: 0px 0px 25px #18CCFC;
+	cursor: pointer;
+}
+
+
+
+

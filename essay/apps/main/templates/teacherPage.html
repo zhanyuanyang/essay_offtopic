@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>英语作文跑题检测系统</title>
+	<link rel="stylesheet" type="text/css" href="css/teacherPage.css">
+	<script type="text/javascript" src="js/teacherPage.js"></script>
+</head>
+<body>
+	<div id="logo"></div>
+	<div id="namebox">XXX</div>
+	<div id="exitbox"><a></a></div>
+
+	<div class="outerContainer">
+		<div id="hidebg"></div>
+		<div class="top">
+			<div class="top_left">
+				<div class="teacherBox">
+					<div class="teacherPicBox">
+						<a href="##" id="timgA" onclick="showPhoto();"><img src=""></a>
+					</div>
+					<div>
+						<button class="personalInfor">个人信息管理</button>
+					</div>
+					<div>
+						<button class="studentManage">学生管理</button>
+					</div>
+				</div>
+			</div>
+			<div class="top_right">
+				<span>作文发布</span>
+				<form>
+					<span>作文标题：</span>
+					<input type="text" class="teacherText" id="showT">
+					<select class="teacherSelect" id="showS">
+						<option>The water is important</option>
+						<option>AAA</option>
+						<option>AAA</option>
+						<option>AAA</option>
+						<option>AAA</option>
+						<option>AAA</option>
+					</select><br />
+					<input type="radio" name="type" class="radio" onclick="showSelection();" checked="checked">题库
+					<input type="radio" name="type" onclick="showText();">自选<br/>
+
+					<span>要求：</span>
+					<textarea required class="theRequire"></textarea><br/>
+					<span>截止时间：</span>
+					<input type="date" class="smallCalendar"><br/>
+					<input type="submit" class="submit" value="确认发布">
+				</form>
+			</div>
+		</div>
+
+		<div class="bottom">
+			<div class="historyBody">
+				<table id="hisBody">
+					<tr>
+						<th>题目ID</th>
+						<th>完成人数</th>
+						<th>题目</th>
+						<th>截止时间</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>34/40</td>
+						<td>Money is nothing</td>
+						<td>2017.03.25</td>
+						<td><a href="##">操作</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<p>Copyright 2017 All rights reverved.</p>
+	</div>
+
+	<div class="tmodify" id="tmodify">
+	<div id="tmodify_back"><a href="" onclick="hidePhoto();"></a></div>  <!-- 叉掉修改窗口 -->
+		<table id="tmodifyTable">
+			<tr>
+				<td rowspan="2"><img src="" id="tmodifyPic"><button>上传头像</button></td>
+				<td>昵称：</td>
+				<td><input type="text"></td>
+			</tr>
+			<tr>
+				<td>修改密码&nbsp<a onclick="showtmodifyPsw();" id="pwdBox"><img src="img/Calendar/down.png"></a></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>旧密码：</td>
+				<td><input type="password"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>新密码：</td>
+				<td><input type="password"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>再次输入密码：</td>
+				<td><input type="password"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="submit" id="tmodifySub"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
