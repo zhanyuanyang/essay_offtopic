@@ -7,7 +7,7 @@ import collections
 import django.utils.timezone as timezone
 
 
-# Create your models here.
+
 
 class Essay(models.Model):
     # 作文题目
@@ -25,7 +25,7 @@ class Essay(models.Model):
     type = models.CharField(max_length=2,
                             choices=ESSAY_TYPE_CHOICES,
                             default=AUTONOMOUS)
-    teacher_id = models.ForeignKey('Teacher')
+    teacher_id = models.ForeignKey('teacher.Teacher')
 
     def is_upperclass(self):
         return self.type in (self.AUTONOMOUS, self.PLAN)
@@ -51,7 +51,7 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     avatar = models.CharField(max_length=30)
     exp = models.IntegerField()
-    teacher_id = models.ForeignKey('Teacher')
+    teacher_id = models.ForeignKey('teacher.Teacher')
 
     def __unicode__(self):
         return self.name
@@ -71,29 +71,3 @@ class Report(models.Model):
 
     def __unicode__(self):
         return self.user_id, self.essay_id
-
-
-class Teacher(models.Model):
-    # 工号
-    teacher_id = models.CharField(max_length=50, default='1')
-    name = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    avatar = models.CharField(max_length=30)
-
-# # class ErrorField(models.Field):
-
-#
-# result ={}
-#     #errors渲染前端作文错误
-#     errors = [{'index':{'start':1,'end':3},'error_type':'missSpelling','replace_word':['hello','halo']}]
-#     #chart1：错误类型数据渲染图表
-#     chart1 = {'adj':'100','v':'200','n':'300','adv':'400'}
-#     #chart2：使用词数类型数据渲染图表
-#     chart2 = {'adj':'100','v':'200','n':'300','adv':'400'}
-#     #detail详细错误
-#     detail = [('详细错误',''),()]
-#     result['errors'] = json.dumps(errors)
-#     result['chart1'] = json.dumps(chart1)
-#     result['chart2'] = json.dumps(chart2)
-#     result['detail'] = detail
-#     result['score'] = ''
