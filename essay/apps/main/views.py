@@ -19,18 +19,6 @@ global detector_un
 detector_un = de.Detector("")
 
 
-# Create your views here.
-# json测试页面
-def home(request):
-    List = ['Json测试', '成功了！']
-    Dict = {'site': '测试页面', 'author': 'pkx'}
-    Dict2 = {'日期': '2017.03.22', '名字': '小花'}
-    return render(request, 'home.html', {
-        'List': json.dumps(List),
-        'Dict': json.dumps(Dict),
-        'Dict2': json.dumps(Dict2),
-    })
-
 
 # 贝叶斯评分
 def score(request):
@@ -43,7 +31,7 @@ def score(request):
         text = [content]
         dict['score'] = test.run(text)
 
-    return render(request, 'test2_score.html', dict)
+    return render(request, 'main/test2_score.html', dict)
 
 
 # 无监督跑题检测
@@ -57,7 +45,7 @@ def detect(request):
 
         dict['score'] = float(detector.offtopic_detect(content, 'LDA'))
 
-    return render(request, 'test1_detect.html', dict)
+    return render(request, 'main/test1_detect.html', dict)
 
 
 # 有监督跑题检测
@@ -76,7 +64,7 @@ def detect2(request):
         elif result == 'false':
             dict['result'] = "跑题"
 
-    return render(request, 'test3_detect2.html', dict)
+    return render(request, 'main/test3_detect2.html', dict)
 
 
 # 重定向测试
@@ -126,7 +114,7 @@ def write_offtopic(request):
         result['user_id'] = user.user_id
         result['record_id'] = record.id
 
-        return render(request, 'planWrite.html', result)
+        return render(request, 'main/planWrite.html', result)
         # except:
         #     if result['type'] == 'AT':
         #         return render(request, 'selfWrite.html')
@@ -180,7 +168,7 @@ def calendar_result(request):
     dict['content'] = record.content
     result['content'] = json.dumps(dict)
 
-    return render(request, 'planResult.html', result)
+    return render(request, 'main/planResult.html', result)
 
 
 # 无监督自选题目提交作文
@@ -267,7 +255,7 @@ def saveUnsuperviesd(request):
             record.isSubmit = True
             record.save()
 
-            return render(request, 'planResult.html', result)
+            return render(request, 'main/planResult.html', result)
 
         user = record.user_id
         # print report
@@ -278,7 +266,7 @@ def saveUnsuperviesd(request):
         result['user_id'] = user.user_id
         result['record_id'] = record.id
         request.session['user_id'] = user.user_id
-        return render(request, 'selfWrite.html', result)
+        return render(request, 'main/selfWrite.html', result)
 
 
 # 有监督限定标题提交作文，查看结果
@@ -392,7 +380,7 @@ def saveEssay(request):
         result['user_id'] = user.user_id
         result['record_id'] = record.id
         request.session['user_id'] = user.user_id
-        return render(request, 'planWrite.html', result)
+        return render(request, 'main/planWrite.html', result)
 
 
 # 历史页面，作文查看
@@ -441,7 +429,7 @@ def history_result(request):
         result['isOffTopic'] = "跑题"
         result['score'] = 0
 
-    return render(request, 'planResult.html', result)
+    return render(request, 'main/planResult.html', result)
 
 
 # 中间结果页面
@@ -482,7 +470,7 @@ def intermediateResults(request):
     else:
         result['isOffTopic'] = "跑题"
 
-    return render(request, 'intermediateResults.html', result)
+    return render(request, 'main/intermediateResults.html', result)
 
 
 # 历史页面写作
@@ -501,14 +489,14 @@ def write_historyEssay(request):
     # request.session['user_id'] = user.user_id
 
     if essay.type == 'AT':
-        return render(request, 'selfWrite.html', result)
+        return render(request, 'main/selfWrite.html', result)
     else:
-        return render(request, 'planWrite.html', result)
+        return render(request, 'main/planWrite.html', result)
 
 
 # 登陆页面的显示
 def login(request):
-    return render(request, 'Login&Register.html')
+    return render(request, 'main/Login&Register.html')
 
 
 # 注册事件响应
@@ -519,9 +507,9 @@ def register_action(request):
     confirm_password = request.POST.get('confirm_password', 'confirm_password')
     if password == confirm_password:
         User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
-        return render(request, 'Login&Register.html', {'result': 'succes'})
+        return render(request, 'main/Login&Register.html', {'result': 'succes'})
     else:
-        return render(request, 'Login&Register.html', {'result': 'fail'})
+        return render(request, 'main/Login&Register.html', {'result': 'fail'})
 
 
 # 登陆事件响应
@@ -542,7 +530,7 @@ def main(request):
             # request.session['personico'] = query.avatar
             user = User.objects.filter(user_id=USER_ID)
         else:
-            return render(request, 'Login&Register.html', {'result': 'error'})
+            return render(request, 'main/Login&Register.html', {'result': 'error'})
     personico = query.avatar
     sum = User_Essay.objects.all().filter(user_id=user)
     essay = User_Essay.objects.all().values('essay_id').filter(user_id=user)
@@ -576,7 +564,7 @@ def main(request):
             dict['type'] = type
             date.append(dict)
     print len(date)
-    return render(request, 'calendar.html',
+    return render(request, 'main/calendar.html',
                   {'actual_name': request.session.get('actual_name'), 'personico': personico,
                    'exp': query.exp,
                    'written_num': len(sum), 'date': json.dumps(date)})
@@ -595,9 +583,9 @@ def setting_avatar(request):
             fobj.write(chrunk)
         fobj.close()
         User.objects.filter(user_id=request.session.get('user_id')).update(avatar=f.name)
-        return render(request, 'calendar.html', {'personico': f.name})
+        return render(request, 'main/calendar.html', {'personico': f.name})
     else:
-        return render(request, 'calendar.html')
+        return render(request, 'main/calendar.html')
 
 
 # 历史作文页面显示
@@ -626,14 +614,14 @@ def show_history(request):
 
     context = {'essaylist': essay_list, 'actual_name': request.session.get('actual_name')}
     # TODO：根据isSubmit的值判断操作跳转，前端部分
-    return render(request, 'myhistory.html', context)
+    return render(request, 'main/myhistory.html', context)
 
 
 def exit(request):
     # request.session.set_expiry()
     del request.session['user_id']
     del request.session['actual_name']
-    return render(request, 'Login&Register.html')
+    return render(request, 'main/Login&Register.html')
 
 # #结果页面显示
 # def show_result(request):

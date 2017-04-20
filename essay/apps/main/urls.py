@@ -24,5 +24,4 @@ urlpatterns = [
     url(r'^detect2/', views.detect2, name='detect2'),
     # url(r'^calendar_cat/', views.display, name='calendar_display'),
     url(r'^login/$', views.exit, name='logout')
-
 ]
