@@ -8,7 +8,6 @@ import django.utils.timezone as timezone
 
 
 
-
 class Essay(models.Model):
     # 作文题目
     title = models.CharField(max_length=100, default='no title')

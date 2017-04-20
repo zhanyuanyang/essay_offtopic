@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>英语作文跑题检测系统</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/LR.css' %}">
+	<script src="{% static 'login/js/LR.js' %}"></script>
+</head>
+<body>
+	<div id="banner"><img src="{% static 'login/img/LoginPage/banner.png' %}"></div>
+	<div id="orange">
+		<p id="Copyright">Copyright 2017 All rights reserved.</p>
+	</div>
+	<div id="LoginResgi">
+		<ul id="Boxhead">
+			<li class="active">登录</li><li>注册</li>
+		</ul>
+		<div>
+			<ul>
+				<form id="loginForm" action="{% url 'teacher:main' %}" method="post">
+                   	{% csrf_token %}
+					{{result}}
+					教师端
+					<input type="text" placeholder="学号/工号为账号" name="teacher_id">
+					<input type="password" placeholder="密码" name="password">
+					<button type="submit">登录</button>
+				</form>
+				<a href="#">以游客身份登录</a>
+			</ul>
+		</div>
+		<div class="hide">
+			<ul>
+				<form id="registerForm" action="{% url 'teacher:register_action' %}" method="post">
+					{% csrf_token %}
+					<input type="text" placeholder="学号/工号为账号" name="teacher_id">
+					<input type="text" placeholder="真实姓名" name="name" >
+					<input type="password" placeholder="输入密码" name="password">
+					<span>(6~20字符之间至少包括一个数字和字母)</span>
+					<input type="password" placeholder="确认密码" name="confirm_password">
+					<button type="submit">注册</button>
+				</form>
+			</ul>
+		</div>
+	</div>
+
+	<!-- <div id="orange">
+		<p id="Copyright">Copyright 2017 All rights reserved.</p>
+	</div> -->
+</body>
+</html>

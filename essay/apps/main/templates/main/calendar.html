@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>英语作文跑题检测系统</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login/css/calendar.css' %}">
+    <script type="text/javascript" src="{% static 'login/js/calendar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'login/js/jquery.js' %}"></script>
+
+</head>
+<body>
+<div id="hidebg"></div>
+<div id="logo"></div>
+<div id="namebox">{{actual_name}}</div>
+<div id="exitbox"><a href="{% url 'login:logout' %}"></a></div>
+<div id="outer_content_box">
+    <div id="personal_table">
+        <div id="mytable">
+            <table cellspacing="10">
+                <tr>
+                    <td rowspan="2"><a href="##" id="imgA" onclick="showPhoto();" onmousemove="showPhotoTips();"
+                                       onmouseout="hidePhotoTips();"><img src="/static/login/jpg/{{personico}}"></a>
+                    </td>
+                    <th>写作学徒</th>
+                    <td>
+                        <a href="{% url 'login:history' %}"><button >作文历史</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>经验值：<span>{{exp}}</span></td>
+                    <td>&nbsp&nbsp已写作文：<span>{{written_num}}</span>篇</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 提示性div -->
+        <div id="photoTips">点击头像修改</div>
+
+        <div></div>
+    </div>
+    <div id="time_head_date">
+        <div id="leftarrow"><a onclick="leftCalendar();"></a></div>
+        <span id="month"></span>
+        <span id="year"></span>
+        <div id="rightarrow"><a onclick="rightCalendar();"></a></div>
+    </div>
+    <div id="time_table">
+    </div>
+    <p>Copyright 2017 All rights</p>
+</div>
+
+<div class="modify" id="modify">
+    <div id="modify_back"><a href="{% url 'login:main' %}" onclick="hidePhoto();"></a></div>  <!-- 叉掉修改窗口 -->
+    <table id="modifyTable">
+        <tr>
+            <td rowspan="2"><img src="/static/login/jpg/{{personico}}" id="modifyPic">
+                <form method="post" action="{% url 'login:setting_avatar'%}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="personico"/>
+                    <button type="submit">上传头像</button>
+                </form>
+            </td>
+                <td>昵称：</td>
+                <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>修改密码&nbsp<a onclick="showModifyPsw();" id="pwdBox"><img
+                    src="{% static 'login/img/Calendar/down.png' %}"></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>旧密码：</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>新密码：</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>再次输入密码：</td>
+            <td><input type="password"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td><input type="submit" id="modifySub"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    var Calendar_d = {{ date|safe }};
+    <!--var actual_name = {{actual_name}};-->
+    function myajax(y,m,a){
+
+            var myduedate = y + "-" + m + "-" + (a+1);
+            window.location.href="../write?key="+myduedate;
+
+    }
+    function mysecondajax(y,m,a){
+
+            var myduedate = y + "-" + m + "-" + (a+1);
+            window.location.href="../calendar_result?key="+myduedate;
+
+    }
+</script>
+
+
+</body>
+</html>
