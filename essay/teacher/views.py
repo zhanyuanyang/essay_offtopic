@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
-from models import *
-from apps.main.models import Essay
+from teacher.models import *
+from main.models import Essay
 
 
 def test(request):
@@ -32,16 +32,15 @@ def main(request):
     query = ''
     if request.session.get('teacher_id'):
         query = Teacher.objects.get(teacher_id=request.session.get('teacher_id'))
-        teacher = Teacher.objects.filter(teacher_id=query.teacher_id)
     else:
         Teacher_id = request.POST.get('teacher_id')
         PASSWORD = request.POST.get('password')
         query = Teacher.objects.get(teacher_id=Teacher_id)
         if PASSWORD == query.password:
-            request.session['teacher_id'] = Teacher_id
             request.session['name'] = query.name
-            # request.session['personico'] = query.avatar
-            teacher = Teacher.objects.filter(teacher_id=Teacher_id)
+            request.session['teacher_id'] = query.teacher_id
+            request.session['id'] = query.id
+
         else:
             return render(request, 'Login&Register.html', {'result': 'error'})
     result = {}
@@ -57,12 +56,18 @@ def essayRelease(request):
     title = request.POST.get('title')
     description = request.POST.get('description')
     due_time = request.POST.get('due_time')
-    Essay.objects.create(title=title, due_time=due_time, description=description, type=type,
-                              teacher_id='1')  # request.session.get('teacher_id')
-    return render(request, 'teacher/teacherPage.html')
+    print request.session.get('id')
+    Essay.objects.create(teacher_id_id=request.session.get('id'), title=title, due_time=due_time,
+                         description=description, type=type)
+    query = Teacher.objects.get(teacher_id=request.session.get('teacher_id'))
+    result = {}
+    result['personico'] = query.avatar
+    result['name'] = query.name
+    trainedTopics_list = TrainedTopics.objects.all()
+    return render(request, 'teacher/teacherPage.html', {'result': result, 'trainedTopics_list': trainedTopics_list})
 
 
 def exit(request):
-    del request.session['user_id']
+    del request.session['teacher_id']
     del request.session['name']
     return render(request, 'teacher/Login&Register.html')
