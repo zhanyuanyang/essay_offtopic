@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from teacher.models import Teacher
 from jsonfield import JSONField
 import collections
 import django.utils.timezone as timezone
@@ -24,7 +25,7 @@ class Essay(models.Model):
     type = models.CharField(max_length=2,
                             choices=ESSAY_TYPE_CHOICES,
                             default=AUTONOMOUS)
-    teacher_id = models.ForeignKey('teacher.Teacher')
+    teacher_id = models.ForeignKey(Teacher)
 
     def is_upperclass(self):
         return self.type in (self.AUTONOMOUS, self.PLAN)
@@ -50,7 +51,7 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     avatar = models.CharField(max_length=30)
     exp = models.IntegerField()
-    teacher_id = models.ForeignKey('teacher.Teacher')
+    teacher_id = models.ForeignKey(Teacher)
 
     def __unicode__(self):
         return self.name
