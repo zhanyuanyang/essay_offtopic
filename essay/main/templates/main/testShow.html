@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#title_window{
+			display: block;
+			width: 500px;
+			height: 200px;
+			border:1px black grey;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px grey;
+			padding-top: 1px;
+		}
+
+		.title_close{
+			width: 16px;
+			height: 16px;
+			display: block;
+			background-image: url(./img/Calendar/close.png);
+			background-repeat: no-repeat;
+			margin-left: 470px;
+			margin-top: 20px;
+		}
+		.title_close:hover{
+			width: 16px;
+			height: 16px;
+			display: block;
+			background-image: url(./img/Calendar/close_click.png);
+			cursor: pointer;
+		}
+		.title_left{
+			width: 18px;
+			height: 34px;
+			background-image: url(./img/Calendar/leftarrow.png);
+			margin-left: 10px;
+		}
+		.title_left:hover{
+			width: 18px;
+			height: 34px;
+			background-image: url(./img/Calendar/leftarrow_click.png);
+			cursor: pointer;
+		}
+		.title_right{
+			width: 18px;
+			height: 34px;
+			background-image: url(./img/Calendar/rightarrow.png);
+			display: inline-block;
+			margin-left: 470px;
+			margin-top: -40px;
+		}
+		.title_right:hover{
+			width: 18px;
+			height: 34px;
+			background-image: url(./img/Calendar/rightarrow_click.png);
+			cursor: pointer;
+		}
+		.title_1{
+			width: 380px;
+			height: 30px;
+			border:1px solid black;
+			margin-left: 50px;
+			text-align: center;
+			border-radius: 5px;
+			line-height: 30px;
+		}
+		.title_1:hover{
+			border:1px solid #4FEAFB;
+			cursor: pointer;
+			color: #4FEAFB;
+		}
+		.title_2{
+			width: 380px;
+			height: 30px;
+			line-height: 30px;
+			border:1px solid black;
+			margin-left: 50px;
+			text-align: center;
+			border-radius: 5px;
+		}
+		.title_2:hover{
+			border:1px solid #4FEAFB;
+			cursor: pointer;
+			color: #4FEAFB;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="title_window">
+		<div class="title_close" onclick="title_close();"></div>
+		<div class="title_1">Money is nothing.</div>
+		<div class="title_left" onclick="title_left();"></div>
+		<div class="title_right" onclick="title_right();"></div>
+		<div class="title_2">Money is nothing.</div>
+	</div>
+
+	<script type="text/javascript">
+		var list = {{ result|safe }};
+		console.log(list);
+		alert(list);
+
+	</script>
+
+	<script type="text/javascript">
+		function title_close(){
+			document.getElementById("title_window").style.display = "none";
+		}
+
+		function title_left(){
+			alert(111);
+			//方法在这里写
+		}
+		function title_right(){
+			alert(222);
+			//方法在这里写
+		}
+	</script>
+</body>
+</html>
