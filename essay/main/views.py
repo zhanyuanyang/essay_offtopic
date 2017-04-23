@@ -14,6 +14,7 @@ from models import Essay
 from models import User
 from models import User_Essay
 from models import Report
+from teacher.models import Teacher
 
 global detector_un
 detector_un = de.Detector("")
@@ -119,6 +120,8 @@ def write(request):
     result['content'] = record.content
     result['user_id'] = user.user_id
     result['record_id'] = record.id
+    #新增一栏描述
+    result['description'] = essay_object.description
 
     return render(request, 'main/planWrite.html', result)
 
@@ -596,6 +599,9 @@ def write_historyEssay(request):
     result['type'] = essay.type
     result['user_id'] = user.user_id
     result['record_id'] = record.id
+    # 新增一栏描述
+    result['description'] = essay.description
+
     # request.session['user_id'] = user.user_id
 
     if essay.type == 'AT':
@@ -606,17 +612,31 @@ def write_historyEssay(request):
 
 # 登陆页面的显示
 def login(request):
-    return render(request, 'main/Login&Register.html')
+    #4.23新增
+    teachers = Teacher.objects.all()
+    TeacherList = []
+    for i in teachers:
+        result = {}
+        result['teacher_id'] = i.teacher_id
+        result['name'] = i.name
+        TeacherList.append(result)
+
+    return render(request, 'main/Login&Register.html',{'teacherList':json.dumps(TeacherList)})
 
 
 # 注册事件响应
 def register_action(request):
+    #4.23新增：前端学生选中一个老师，加入老师的班级，传回一个teacher_id
+    teacher_id = request.POST.get('teacher_id','teacher_id')
+    teacher = Teacher.objects.get(teacher_id=teacher_id)
+
     user_id = request.POST.get('user_id', 'user_id')
     actual_name = request.POST.get('actual_name', 'actual_name')
     password = request.POST.get('password', 'password')
     confirm_password = request.POST.get('confirm_password', 'confirm_password')
     if password == confirm_password:
-        User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
+        # User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
+        User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0, teacher_id = teacher)
         return render(request, 'main/Login&Register.html', {'result': 'succes'})
     else:
         return render(request, 'main/Login&Register.html', {'result': 'fail'})
@@ -732,6 +752,10 @@ def exit(request):
     del request.session['user_id']
     del request.session['actual_name']
     return render(request, 'main/Login&Register.html')
+
+#自主学习按钮跳转
+def selfLearn(request):
+    return render(request,'main/selfWrite.html')
 
 # #结果页面显示
 # def show_result(request):

@@ -60,13 +60,23 @@
 						<th>截止时间</th>
 						<th>操作</th>
 					</tr>
+					{% for i in essayList %}
 					<tr>
+						<!--id自增，前端控制-->
 						<td>1</td>
-						<td>34/40</td>
-						<td>Money is nothing</td>
-						<td>2017.03.25</td>
-						<td><a href="##">操作</a></td>
+						<td>{{ i.finish }}</td>
+						<td>{{ i.title }}</td>
+						<td>{{ i.due_time }}</td>
+						<td><a href="{% url 'teacher:view_detail' %}?id={{i.essayid}}">查看</a></td>
 					</tr>
+					{% endfor %}
+					<!--<tr>-->
+						<!--<td>1</td>-->
+						<!--<td>34/40</td>-->
+						<!--<td>Money is nothing</td>-->
+						<!--<td>2017.03.25</td>-->
+						<!--<td><a href="##">操作</a></td>-->
+					<!--</tr>-->
 				</table>
 			</div>
 		</div>

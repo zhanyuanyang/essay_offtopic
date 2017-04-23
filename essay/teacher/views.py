@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from teacher.models import *
 from main.models import Essay
+from main.models import User_Essay
+from main.models import User
+from django.http import HttpResponse
+import json
 
 
 def test(request):
@@ -47,7 +51,29 @@ def main(request):
     result['personico'] = query.avatar
     result['name'] = query.name
     trainedTopics_list = TrainedTopics.objects.all()
-    return render(request, 'teacher/teacherPage.html', {'result': result, 'trainedTopics_list': trainedTopics_list})
+    result['trainedTopics_list'] = trainedTopics_list
+
+    #4.23新增：任务列表信息。完成人数-finish，题目title，截止时间duetime，文章id--essay_id
+    teacher = Teacher.objects.get(id=request.session['id'])
+    #学生人数
+    std_num = len(User.objects.filter(teacher_id=teacher))
+    essay_object = Essay.objects.filter(teacher_id = teacher)
+    essayList = []
+    for i in essay_object:
+        temp = {}
+        temp['title'] = i.title
+        temp['due_time'] = i.due_time
+        temp['essayid'] = i.id
+        finish_num = 0
+        set = User_Essay.objects.filter(essay_id = i )
+        for j in set:
+            if j.isSubmit == True :
+                finish_num = finish_num + 1
+        tempstr = str(finish_num)+"/"+str(std_num)
+        temp['finish'] = tempstr
+        essayList.append(temp)
+    result['essayList'] = essayList
+    return render(request, 'teacher/teacherPage.html', result)
 
 
 # 发布作文
@@ -66,6 +92,18 @@ def essayRelease(request):
     trainedTopics_list = TrainedTopics.objects.all()
     return render(request, 'teacher/teacherPage.html', {'result': result, 'trainedTopics_list': trainedTopics_list})
 
+#查看学生的具体完成情况
+#TODO:查看页面构思，最先做这个
+def view(request):
+    return HttpResponse('查看页面')
+
+#学生管理
+def std_manage(request):
+    return
+
+#个人信息管理，改密码之类的
+def show_profile(request):
+    return
 
 def exit(request):
     del request.session['teacher_id']
