@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="logo"></div>
-	<div id="namebox">{{result.name}}</div>
+	<div id="namebox">{{name}}</div>
 	<div id="exitbox"><a href="{% url 'teacher:exit' %}"></a></div>
 
 	<div class="outerContainer">
@@ -18,13 +18,13 @@
 			<div class="top_left">
 				<div class="teacherBox">
 					<div class="teacherPicBox">
-						<a href="##" id="timgA" onclick="showPhoto();"><img src="/static/jpg/{{result.personico}}"></a>
+						<a href="##" id="timgA" onclick="showPhoto();"><img src="/static/jpg/{{personico}}"></a>
 					</div>
 					<div>
 						<button class="personalInfor">个人信息管理</button>
 					</div>
 					<div>
-						<button class="studentManage">学生管理</button>
+						<button class="studentManage"><a href="{% url 'teacher:std_manage' %}">学生管理</a></button>
 					</div>
 				</div>
 			</div>
