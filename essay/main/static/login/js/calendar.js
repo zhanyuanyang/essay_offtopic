@@ -234,3 +234,41 @@ function showModifyPsw(){
 		tr[i].style.marginBottom = "10px";
 	}
 }
+
+        function show_title(){
+            var sign =
+		    document.getElementById('hidebg').style.display = "block";
+		    document.getElementById("title_window").style.display = "block";
+		}
+
+
+        function title_close(){
+            document.getElementById('hidebg').style.display = "none";
+			document.getElementById("title_window").style.display = "none";
+		}
+
+
+
+		function title_left(){
+			//方法在这里写
+            json1 = {};
+		    json1.list = list;
+
+			var tdiv = document.getElementById("title_1");
+            while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            {
+                tdiv.removeChild(tdiv.firstChild);
+            }
+			tdiv.innerHTML = "<span>"+ list[0].title +"</span>";
+		}
+
+		function title_right(){
+			//方法在这里写
+			var tdiv = document.getElementById("title_1");
+            while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            {
+                tdiv.removeChild(tdiv.firstChild);
+            }
+			tdiv.innerHTML = "<span>"+ 777777 +"</span>";
+		}
+

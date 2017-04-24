@@ -93,13 +93,30 @@
     </table>
 </div>
 
+<!--<button onclick="show_title();">dianji dianji</button>-->
+    <div id="title_window">
+		<div class="title_close" onclick="title_close();"></div>
+        <div class="title_1" id="title_1"></div>
+		<div class="title_left" onclick="title_left();"></div>
+		<div class="title_right" onclick="title_right();"></div>
+        <div class="title_2" id="title_2"></div>
+	</div>
+
+
+
 <script>
     var Calendar_d = {{ date|safe }};
+    <!--if ({{ sign }} == 0){-->
+        <!--var list = {{ result|safe }};-->
+    <!--}-->
+
     <!--var actual_name = {{actual_name}};-->
     function myajax(y,m,a){
 
+
             var myduedate = y + "-" + m + "-" + (a+1);
             window.location.href="../write?key="+myduedate;
+
 
     }
     function mysecondajax(y,m,a){
@@ -108,6 +125,8 @@
             window.location.href="../calendar_result?key="+myduedate;
 
     }
+
+		console.log(list);
 </script>
 
 

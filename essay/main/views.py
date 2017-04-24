@@ -99,7 +99,7 @@ def select_blue(request):
             result['isSubmit'] = False
         resultList.append(result)
 
-    return render(request,'main/testShow.html',{'result':json.dumps(resultList)})
+    return render(request,'main/calendar.html',{'result':json.dumps(resultList),'sign':1})
 
 #蓝色按钮列表，点击具体一个，开始写作
 def write(request):
@@ -697,7 +697,7 @@ def main(request):
     return render(request, 'main/calendar.html',
                   {'actual_name': request.session.get('actual_name'), 'personico': personico,
                    'exp': query.exp,
-                   'written_num': len(sum), 'date': json.dumps(date)})
+                   'written_num': len(sum), 'date': json.dumps(date),'sign':0})
 
 
 # 点击头像
