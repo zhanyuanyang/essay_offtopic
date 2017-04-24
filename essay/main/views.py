@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import json
 import os
-
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from algorithm.NBscore import Score as sc
@@ -14,6 +14,7 @@ from models import Essay
 from models import User
 from models import User_Essay
 from models import Report
+from teacher.models import Teacher
 
 global detector_un
 detector_un = de.Detector("")
@@ -72,6 +73,58 @@ def update_time(request):
     # pass  ...   form处理
     return HttpResponseRedirect('/score')  # 跳转界面
 
+#日历页面点击蓝色按钮，选择作文题目列表
+def select_blue(request):
+    str_due_time = request.GET['key']
+    import datetime
+    re = datetime.datetime.strptime(str_due_time, "%Y-%m-%d")
+    due_time = re
+    user_id = request.session['user_id']
+    user = User.objects.get(user_id=user_id)
+    essay_object = Essay.objects.filter(due_time=due_time,teacher_id=user.teacher_id)
+    #result数组用于传送结果
+    resultList = []
+
+
+    for i in essay_object:
+        result = {}
+        result['id'] = i.id
+        result['title'] = i.title
+        # print i.id
+
+        if len(User_Essay.objects.filter(essay_id=i.id, user_id=user))>0:
+            useressay = User_Essay.objects.get(essay_id=i.id, user_id=user)
+            result['isSubmit'] = useressay.isSubmit
+        else:
+            result['isSubmit'] = False
+        resultList.append(result)
+
+    return render(request,'main/testShow.html',{'result':json.dumps(resultList)})
+
+#蓝色按钮列表，点击具体一个，开始写作
+def write(request):
+    essay_id = request.GET['id']
+    user = request.session['user_id']
+    essay_object = Essay.objects.get(id = essay_id)
+
+    if len(User_Essay.objects.filter(essay_id=essay_object, user_id=user)) > 0:
+        record = User_Essay.objects.get(essay_id=essay_object, user_id=user)
+    else:
+        record = User_Essay()
+        record.essay_id = essay_object
+        record.user_id = user
+        record.user_title = essay_object.title
+        record.save()
+    result = {}
+    result['title'] = record.user_title
+    result['content'] = record.content
+    result['user_id'] = user.user_id
+    result['record_id'] = record.id
+    #新增一栏描述
+    result['description'] = essay_object.description
+
+    return render(request, 'main/planWrite.html', result)
+
 
 # 日历页面显示写作页面，蓝色按钮
 def write_offtopic(request):
@@ -84,7 +137,6 @@ def write_offtopic(request):
     essay_object = Essay.objects.get(due_time=due_time)
     result = {}
     result['type'] = essay_object.type
-    # try:
 
     # request.session['user_id'] = user.user_id
     if result['type'] == 'AT':
@@ -98,7 +150,7 @@ def write_offtopic(request):
         result['content'] = record.content
         result['user_id'] = user.user_id
         result['record_id'] = record.id
-        return render(request, 'selfWrite.html', result)
+        return render(request, 'main/selfWrite.html', result)
     elif result['type'] == 'PL':
         if len(User_Essay.objects.filter(essay_id=essay_object, user_id=user)) > 0:
             record = User_Essay.objects.get(essay_id=essay_object, user_id=user)
@@ -120,6 +172,67 @@ def write_offtopic(request):
         #         return render(request, 'selfWrite.html')
         #     elif result['type'] == 'PL':
         #         return render(request, 'planWrite.html')
+
+#日历页面点击绿色按钮，选择作文题目列表
+def select_green(request):
+    str_due_time = request.GET['key']
+    import datetime
+    re = datetime.datetime.strptime(str_due_time, "%Y-%m-%d")
+    due_time = re
+    user_id = request.session['user_id']
+    user = User.objects.get(user_id=user_id)
+    essay_object = Essay.objects.filter(due_time=due_time,teacher_id=user.teacher_id)
+    resultList=[]
+    for i in essay_object:
+        result = {}
+        result['id'] = i.id
+        useressay = User_Essay.objects.get(essay_id=i.id,user_id = user)
+        result['title'] = useressay.user_title
+        print i.id
+
+        result['isSubmit'] = useressay.isSubmit
+        resultList.append(result)
+
+    return render(request,'main/testShow.html',{'result':json.dumps(resultList)})
+
+#绿色按钮列表，点击具体一个，查看结果
+def green_result(request):
+    essay_id = request.GET['id']
+    user = request.session['user_id']
+    essay = Essay.objects.get(id=essay_id)
+
+    record = User_Essay.objects.get(essay_id=essay, user_id=user)
+    report = Report.objects.get(essay_id=essay, user_id=user)
+
+    result = {}
+    result['actual_name'] = request.session.get('actual_name')
+    result['chart1'] = report.chart1
+    result['chart2'] = report.chart2
+    result['errors'] = report.error
+    result['detail'] = report.detail
+    result['score'] = report.score
+    detect_result = report.isOffTopic
+    result['feedback'] = report.feedback
+
+    result['title'] = record.user_title
+    if essay.type == "AT":
+        result['type'] = "自主学习"
+        result['score'] = 0
+    elif essay.type == "PL":
+        result['type'] = "计划学习"
+
+    if detect_result == True:
+        result['isOffTopic'] = "切题"
+    elif detect_result == False:
+        result['isOffTopic'] = "跑题"
+        result['score'] = 0
+
+    # 传入内容渲染
+    dict = {}
+    dict['content'] = record.content
+    result['content'] = json.dumps(dict)
+
+    return render(request, 'main/planResult.html', result)
 
 
 # 日历页面查看结果页面，绿色按钮
@@ -486,6 +599,9 @@ def write_historyEssay(request):
     result['type'] = essay.type
     result['user_id'] = user.user_id
     result['record_id'] = record.id
+    # 新增一栏描述
+    result['description'] = essay.description
+
     # request.session['user_id'] = user.user_id
 
     if essay.type == 'AT':
@@ -496,17 +612,31 @@ def write_historyEssay(request):
 
 # 登陆页面的显示
 def login(request):
-    return render(request, 'main/Login&Register.html')
+    #4.23新增
+    teachers = Teacher.objects.all()
+    TeacherList = []
+    for i in teachers:
+        result = {}
+        result['teacher_id'] = i.teacher_id
+        result['name'] = i.name
+        TeacherList.append(result)
+
+    return render(request, 'main/Login&Register.html',{'teacherList':json.dumps(TeacherList)})
 
 
 # 注册事件响应
 def register_action(request):
+    #4.23新增：前端学生选中一个老师，加入老师的班级，传回一个teacher_id
+    teacher_id = request.POST.get('teacher_id','teacher_id')
+    teacher = Teacher.objects.get(teacher_id=teacher_id)
+
     user_id = request.POST.get('user_id', 'user_id')
     actual_name = request.POST.get('actual_name', 'actual_name')
     password = request.POST.get('password', 'password')
     confirm_password = request.POST.get('confirm_password', 'confirm_password')
     if password == confirm_password:
-        User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
+        # User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
+        User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0, teacher_id = teacher)
         return render(request, 'main/Login&Register.html', {'result': 'succes'})
     else:
         return render(request, 'main/Login&Register.html', {'result': 'fail'})
@@ -622,6 +752,10 @@ def exit(request):
     del request.session['user_id']
     del request.session['actual_name']
     return render(request, 'main/Login&Register.html')
+
+#自主学习按钮跳转
+def selfLearn(request):
+    return render(request,'main/selfWrite.html')
 
 # #结果页面显示
 # def show_result(request):

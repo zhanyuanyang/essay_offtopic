@@ -111,7 +111,7 @@ def getErrors(text):
             error = {'index': {'start': fpos, 'end': epos}, 'error_type': posDict_detail[posWord],'replace_word': replace_word}
             errors.append(error)
         else :
-            error = {'index': {'start': fpos, 'end': epos}, 'error_type': word.msg,'replace_word': replace_word}
+            error = {'index': {'start': fpos, 'end': epos}, 'error_type': '存在错误','replace_word': '无替代词'}
             errors.append(error)
         error_detail = {'位置':word.context , '提示':word.msg}
         detail.append(error_detail)
