@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        {% for i in essay %}
+        <td>{{id}}</td>
+        <td>{{ i.finish }}</td>
+        <td>{{ i.title }}</td>
+        <td>{{ i.due_time }}</td>
+        {% endfor %}
+    </tr>
+    {% for i in studentList %}
+    <tr>
+        <td>{{ i.student_id }}</td>
+        <td>{{ i.name }}</td>
+        <td><a href="{% url 'teacher:student_result' %}?id={{id}}">查看</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
