@@ -87,21 +87,24 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript">
+		json = {};
+		var list = {{ result|safe }};
+		json.list = list;
+		console.log(list);
+
+	</script>
+
 
 	<div id="title_window">
 		<div class="title_close" onclick="title_close();"></div>
-		<div class="title_1">Money is nothing.</div>
+		<div class="title_1"><span><script>list[0].title</script></span></div>
 		<div class="title_left" onclick="title_left();"></div>
 		<div class="title_right" onclick="title_right();"></div>
 		<div class="title_2">Money is nothing.</div>
 	</div>
 
-	<script type="text/javascript">
-		var list = {{ result|safe }};
-		console.log(list);
-		alert(list);
 
-	</script>
 
 	<script type="text/javascript">
 		function title_close(){
