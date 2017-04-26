@@ -174,7 +174,8 @@ function showPlan(i){
 	plan_table.onclick = function(){
 		// 在下面填写地址就行了
 		myajax(getYear,getMonth,i);
-	}
+ 	}
+
 }
 
 //无监督模块
@@ -235,16 +236,48 @@ function showModifyPsw(){
 	}
 }
 
+var length = 0;
+var perPage =2;
+var pageNum = 1;
+var count = 0;
+
         function show_title(){
-            var sign =
 		    document.getElementById('hidebg').style.display = "block";
 		    document.getElementById("title_window").style.display = "block";
+		    json1 = {};
+		    json1.list = list;
+		    console.log(list);
+		    length = list.length;//数组长度
+		    //pageNum = Math.ceil(length/perPage);//页数，取大整
+		    count = pageNum-1;//当前记录条数
+		    if(length >=2){
+		    	var tdiv = document.getElementById("title_1");
+				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				tdiv.onclick = function(){
+					window.location.href="../write?id="+list[count].id;
+				}
+				var ttdiv = document.getElementById("title_2");
+				ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
+				ttdiv.onclick = function(){
+					window.location.href="../write?id="+list[count+1].id;
+				}
+		    }else{
+		    	var tdiv = document.getElementById("title_1");
+				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				tdiv.onclick = function(){
+					window.location.href="../write?id="+list[count].id;
+				}
+		    }
+			
 		}
 
 
         function title_close(){
             document.getElementById('hidebg').style.display = "none";
 			document.getElementById("title_window").style.display = "none";
+			length = 0;
+			pageNum = 1;
+			count = 0;
 		}
 
 
@@ -254,21 +287,61 @@ function showModifyPsw(){
             json1 = {};
 		    json1.list = list;
 
-			var tdiv = document.getElementById("title_1");
-            while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
-            {
-                tdiv.removeChild(tdiv.firstChild);
-            }
-			tdiv.innerHTML = "<span>"+ list[0].title +"</span>";
+		    if(pageNum == 1){
+		    	alert("已经是第一页");
+		    }else{
+		    	pageNum = pageNum - 1;
+		    	count = (pageNum - 1)*perPage;
+		    	var tdiv = document.getElementById("title_1");
+            	while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            	{
+                	tdiv.removeChild(tdiv.firstChild);
+            	}
+				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				tdiv.onclick = function(){
+						window.location.href="../write?id="+list[count].id;
+				}
+					var ttdiv = document.getElementById("title_2");
+					while(ttdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            	{
+                	ttdiv.removeChild(ttdiv.firstChild);
+            	}
+					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
+					ttdiv.onclick = function(){
+						window.location.href="../write?id="+list[count+1].id;
+				}
+
+		    }
+			
 		}
 
 		function title_right(){
 			//方法在这里写
-			var tdiv = document.getElementById("title_1");
-            while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
-            {
-                tdiv.removeChild(tdiv.firstChild);
-            }
-			tdiv.innerHTML = "<span>"+ 777777 +"</span>";
+			if(pageNum == Math.ceil(length*1.0/perPage)){
+		    	alert("已经是最后一页");
+		    }else{
+		    	pageNum = pageNum + 1;
+		    	count = (pageNum-1) * perPage;
+		    	var tdiv = document.getElementById("title_1");
+            	while(tdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            	{
+                	tdiv.removeChild(tdiv.firstChild);
+            	}
+				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				tdiv.onclick = function(){
+						window.location.href="../write?id="+list[count].id;
+				}
+					var ttdiv = document.getElementById("title_2");
+					while(ttdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
+            	{
+                	ttdiv.removeChild(ttdiv.firstChild);
+            	}
+					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
+					ttdiv.onclick = function(){
+						window.location.href="../write?id="+list[count+1].id;
+				}
+
+		    }
+			
 		}
 
