@@ -106,17 +106,35 @@
 
 <script>
     var Calendar_d = {{ date|safe }};
-    <!--if ({{ sign }} == 0){-->
-        <!--var list = {{ result|safe }};-->
-    <!--}-->
+    var list;
+    // var actual_name = {{actual_name}};
+    function myajax(y,m,d){
+        var key = y + "-" + m + "-" + (d+1);
+        var request = new XMLHttpRequest();
 
-    <!--var actual_name = {{actual_name}};-->
-    function myajax(y,m,a){
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                var temp = request.responseText;
+                list = JSON.parse(temp);
+                console.log(list);
+            }
+        }
 
+        request.open("GET","../blue/?key="+key,false);
+        request.setRequestHeader("X-Requested-With","XMLHttpRequest");   
+        request.send();//将相应的年-月-日传送到python
+        // request.onreadystatechange = function(){
+        //     if(request.readyState == 4 || request.status == 200){
+                
+        //     }else{
+        //         alert("请求失败");
+        //     }
+        // }
+            
 
-            var myduedate = y + "-" + m + "-" + (a+1);
-            window.location.href="../write?key="+myduedate;
-
+        // window.location.href="../main?key="+key;
+        // window.history.pushState({},"英语跑题检测","../main/?key="+key);
+        show_title();
 
     }
     function mysecondajax(y,m,a){
@@ -126,7 +144,6 @@
 
     }
 
-		console.log(list);
 </script>
 
 

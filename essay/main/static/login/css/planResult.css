@@ -275,7 +275,8 @@ body{width: 100%;height: auto;}
 	height: auto;
 	border:1px #EBEBEB solid;
 	border-radius: 5px;
-	position: relative;
+	/*position: relative;*/
+	position: absolute;
 	background-color: white;
 	/*margin-left: -150px;*/
 	margin-left: -150px;

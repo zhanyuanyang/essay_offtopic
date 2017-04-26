@@ -63,8 +63,14 @@ for(var i = 0;i<errors.length;i++){
 	//修改END
 	!function(i){
 	for(var c=errors[i].index.start ; c <= errors[i].index.end ; c++){
-		document.getElementById("magic"+c).onmouseover = function(){
+		document.getElementById("magic"+c).onmouseover = function(this.src){
 			rDiv.className = "replaceWord";
+			rDiv.id = "replaceWord" +i;
+			var x,y;
+ 			x = event.clientX; 
+ 			y = event.clientY; 
+ 			document.getElementById("replaceWord"+i).style.left = x; 
+ 			document.getElementById("replaceWord"+i).style.top = y;
 			rDiv.innerHTML = "<p>" + errors[i].error_type +"错误："+ "</p >" ;
 			if(stringArray.length>=5){
 				for(var t=0;t<3;t++){
@@ -77,7 +83,7 @@ for(var i = 0;i<errors.length;i++){
 				}
 			}
 
-			document.getElementById("showMagic").appendChild(rDiv);
+			// document.getElementById("showMagic").appendChild(rDiv);
 
 		}
 		}
