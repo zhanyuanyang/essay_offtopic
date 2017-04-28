@@ -253,19 +253,55 @@ var count = 0;
 		    if(length >=2){
 		    	var tdiv = document.getElementById("title_1");
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
-				tdiv.onclick = function(){
-					window.location.href="../write?id="+list[count].id;
+//				console.log(isSubmit);
+                    if(list[count].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
+				    tdiv.onclick = function(){
+				        if(list[count].isSubmit){
+				            window.location.href="../calendar_result?id="+list[count].id;
+				    }else{
+//				        console.log(isSubmit);
+				        window.location.href="../write?id="+list[count].id;
+				    }
+
 				}
 				var ttdiv = document.getElementById("title_2");
 				ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
 				ttdiv.onclick = function(){
-					window.location.href="../write?id="+list[count+1].id;
+				    if(list[count+1].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
+					if(list[count+1].isSubmit){
+					    ttdiv.style.border = "1px solid green";
+			            ttdiv.style.cursor = "pointer";
+			            ttdiv.style.color = "#4FEAFB";
+				        window.location.href="../calendar_result?key="+list[count+1].id;
+				    }else{
+				        window.location.href="../write?id="+list[count+1].id;
+				    }
 				}
 		    }else{
 		    	var tdiv = document.getElementById("title_1");
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				if(list[count].isSubmit){
+				        tdiv.style.border = "1px solid green";
+			            tdiv.style.cursor = "pointer";
+			            tdiv.style.color = "green";
+			    }
 				tdiv.onclick = function(){
-					window.location.href="../write?id="+list[count].id;
+					if(list[count].isSubmit){
+					    tdiv.style.border = "1px solid green";
+			            tdiv.style.cursor = "pointer";
+			            tdiv.style.color = "#4FEAFB";
+				        window.location.href="../calendar_result?key="+list[count].id;
+				    }else{
+				        window.location.href="../write?id="+list[count].id;
+				    }
 				}
 		    }
 			
@@ -299,7 +335,19 @@ var count = 0;
             	}
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
 				tdiv.onclick = function(){
-						window.location.href="../write?id="+list[count].id;
+				if(list[count].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
+						if(list[count].isSubmit){
+						    tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "#4FEAFB";
+				            window.location.href="../calendar_result?key="+list[count].id;
+				        }else{
+				            window.location.href="../write?id="+list[count].id;
+				        }
 				}
 					var ttdiv = document.getElementById("title_2");
 					while(ttdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
@@ -308,7 +356,19 @@ var count = 0;
             	}
 					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
 					ttdiv.onclick = function(){
-						window.location.href="../write?id="+list[count+1].id;
+					if(list[count].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
+						if(list[count+1].isSubmit){
+						    ttdiv.style.border = "1px solid green";
+			                ttdiv.style.cursor = "pointer";
+			                ttdiv.style.color = "#4FEAFB";
+				            window.location.href="../calendar_result?key="+list[count+1].id;
+				        }else{
+				            window.location.href="../write?id="+list[count+1].id;
+				        }
 				}
 
 		    }
@@ -328,8 +388,20 @@ var count = 0;
                 	tdiv.removeChild(tdiv.firstChild);
             	}
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
+				if(list[count].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
 				tdiv.onclick = function(){
-						window.location.href="../write?id="+list[count].id;
+						if(list[count].isSubmit){
+						    tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "#4FEAFB";
+				            window.location.href="../calendar_result?key="+list[count].id;
+				        }else{
+				            window.location.href="../write?id="+list[count].id;
+				        }
 				}
 					var ttdiv = document.getElementById("title_2");
 					while(ttdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
@@ -338,7 +410,19 @@ var count = 0;
             	}
 					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
 					ttdiv.onclick = function(){
-						window.location.href="../write?id="+list[count+1].id;
+					if(list[count].isSubmit){
+				            tdiv.style.border = "1px solid green";
+			                tdiv.style.cursor = "pointer";
+			                tdiv.style.color = "green";
+			        }
+						if(list[count+1].isSubmit){
+						    ttdiv.style.border = "1px solid green";
+			                ttdiv.style.cursor = "pointer";
+			                ttdiv.style.color = "#4FEAFB";
+				            window.location.href="../calendar_result?key="+list[count+1].id;
+				        }else{
+				            window.location.href="../write?id="+list[count+1].id;
+				        }
 				}
 
 		    }

@@ -244,11 +244,13 @@ def green_result(request):
 
 # 日历页面查看结果页面，绿色按钮
 def calendar_result(request):
-    due_date = request.GET['key']
-    import datetime
-    re = datetime.datetime.strptime(due_date, "%Y-%m-%d")
-    due_time = re
-    essay = Essay.objects.get(due_time=due_time)
+    # due_date = request.GET['key']
+    # import datetime
+    # re = datetime.datetime.strptime(due_date, "%Y-%m-%d")
+    # due_time = re
+    # essay = Essay.objects.get(due_time=due_time)
+    essay_id = request.GET['id']
+    essay = Essay.objects.get(id=essay_id)
     user_id = request.session['user_id']
     user = User.objects.get(user_id=user_id)
     record = User_Essay.objects.get(essay_id=essay, user_id=user)
@@ -328,8 +330,6 @@ def saveUnsuperviesd(request):
         #     return HttpResponseRedirect('/login_action')
 
         if sign == '2':
-            # User_Essay.objects.create(content=content, isSubmit=True, essay_id=essay, user_id=user, user_title=title)
-
             # 创建结果
             result['chart1'] = json.dumps(check.getChart1(content))
             result['chart2'] = json.dumps(check.getChart2(content))
@@ -412,22 +412,15 @@ def saveEssay(request):
             # 有就更新
             record = User_Essay.objects.get(user_id=user, essay_id=essay)
             record.content = content
-            # record.user_title = title
             record.save()
-            # if sign == '1':
-            #     return HttpResponseRedirect('/main/login_action')
 
-            # else:
-            # 没有就创建
-            # User_Essay.objects.create(content=content, isSubmit=False, essay_id=essay, user_id=user, user_title=title)
+        # 没有就创建
+        else:
+            User_Essay.objects.create(content=content, isSubmit=False, essay_id=essay, user_id=user, user_title=essay.title)
 
-        # 1为保存; 2 为提交
-        # if sign == '1':
-        #     #TODO:经验值
-        #     return HttpResponseRedirect('/login_action')
 
         if sign == '2':
-            # User_Essay.objects.create(content=content, isSubmit=True, essay_id=essay, user_id=user, user_title=title)
+
 
             # 创建结果
             result['chart1'] = json.dumps(check.getChart1(content))
@@ -438,11 +431,9 @@ def saveEssay(request):
             result['feedback'] = check.getFeedback(content)
             result['actual_name'] = request.session['actual_name']
             # 传回标题和类型以显示
-            useressay = User_Essay.objects.filter(user_id=user, essay_id=essay)
+            useressay = User_Essay.objects.get(user_id=user, essay_id=essay)
             result['title'] = useressay.user_title
             result['type'] = "计划学习"
-            # TODO:排名
-            #
             # TODO:经验值
             user.exp = user.exp + 10
             user.save()
@@ -489,7 +480,7 @@ def saveEssay(request):
             record.isSubmit = True
             record.save()
 
-            return render(request, 'planResult.html', result)
+            return render(request, 'main/planResult.html', result)
 
         user = record.user_id
         # print report
@@ -523,7 +514,7 @@ def history_result(request):
     # 添加标题
     # 传回标题和类型以显示;无监督评分为0
     result['title'] = record.user_title
-    selected_essay = Essay.objects.get(id=essay)
+    selected_essay = Essay.objects.get(id=essay.id)
     if selected_essay.type == "AT":
         result['type'] = "自主学习"
         result['score'] = 0
@@ -644,9 +635,9 @@ def register_action(request):
     if password == confirm_password:
         # User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0)
         User.objects.create(user_id=user_id, actual_name=actual_name, password=password, avatar='', exp=0, teacher_id = teacher)
-        return render(request, 'main/Login&Register.html', {'result': 'succes'})
+        return render(request, 'main/Login&Register.html', {'result': '注册成功！'})
     else:
-        return render(request, 'main/Login&Register.html', {'result': 'fail'})
+        return render(request, 'main/Login&Register.html', {'result': '前后两次输入密码不一致！'})
 
 
 # 登陆事件响应
@@ -660,14 +651,17 @@ def main(request):
     else:
         USER_ID = request.POST.get('user_id')
         PASSWORD = request.POST.get('password')
-        query = User.objects.get(user_id=USER_ID)
+        if len(User.objects.filter(user_id=USER_ID)) > 0 :
+            query = User.objects.get(user_id=USER_ID)
+        else:
+            return render(request,'main/Login&Register.html', {'result': '该用户不存在。'})
         if PASSWORD == query.password:
             request.session['user_id'] = USER_ID
             request.session['actual_name'] = query.actual_name
             # request.session['personico'] = query.avatar
             user = User.objects.filter(user_id=USER_ID)
         else:
-            return render(request, 'main/Login&Register.html', {'result': 'error'})
+            return render(request, 'main/Login&Register.html', {'result': '密码错误。请重新输入。'})
     personico = query.avatar
     sum = User_Essay.objects.all().filter(user_id=user)
     essay = User_Essay.objects.all().values('essay_id').filter(user_id=user)
