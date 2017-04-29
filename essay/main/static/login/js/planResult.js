@@ -78,8 +78,8 @@ for(var i = 0;i<errors.length;i++){
 			if(stringArray.length>5){
 				for(var t=0;t<5;t++){
 				    if (typeof(errors[i].replace_word[t]) == 'undefined') {
-//				        document.getElementById("replaceWord").removeChild("span");
-					    document.getElementById("replaceWord").innerHTML += "<span>" + " "+ "</span>";
+				        document.getElementById("replaceWord").removeChild("span");
+//					    document.getElementById("replaceWord").innerHTML += "<span>" + " "+ "</span>";
 					}
 					else{
 					document.getElementById("replaceWord").innerHTML += "<span>" + errors[i].replace_word[t] + "</span>";

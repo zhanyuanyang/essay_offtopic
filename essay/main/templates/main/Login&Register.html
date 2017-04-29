@@ -20,7 +20,7 @@
 			<ul>
 				<form id="loginForm" action="{% url 'login:main' %}" method="post">
                    	{% csrf_token %}
-					<!--{{result}}-->
+					{{result}}
 					<input type="text" placeholder="学号/工号为账号" name="user_id">
 					<input type="password" placeholder="密码" name="password">
 					<button type="submit">登录</button>
@@ -43,12 +43,12 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-			var result = "{{result}}";
-			if(result != null){
-				alert(result);
-			}
-	</script>
+	<!--<script type="text/javascript">-->
+			<!--var result = "{{result}}";-->
+			<!--if(result != null){-->
+				<!--alert(result);-->
+			<!--}-->
+	<!--</script>-->
 
 	<!--传入教师名单-->
 	<!--<script type="text/javascript">-->

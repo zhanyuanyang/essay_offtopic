@@ -78,7 +78,10 @@ def main(request):
 # 发布作文
 def essayRelease(request):
     type = request.POST.get('type')
-    title = request.POST.get('title')
+    if type=="AT":
+        title = request.POST.get('title1')
+    else:
+        title = request.POST.get('title2')
     description = request.POST.get('description')
     due_time = request.POST.get('due_time')
     print request.session.get('id')

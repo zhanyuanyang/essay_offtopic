@@ -82,8 +82,16 @@ var div = document.getElementById("time_table");
 //	var Calendar_d = {{ date|safe }};
     var json = {};
     json.Calendar_d = Calendar_d;
+    var issubmit_flag = true;
     for(var i =0;i<Calendar_d.length;i++){
         if((Calendar_d[i].year == getYear) && (Calendar_d[i].month == getMonth)){
+            if(Calendar_d.issubmit){
+                var this_issubmit_flag = true;
+                issubmit_flag = issubmit_flag && this_issubmit_flag;
+            }else{
+                var this_issubmit_flag = false;
+                issubmit_flag = issubmit_flag && this_issubmit_flag;
+            }
             if(Calendar_d[i].issubmit){
                 showSuccess(Calendar_d[i].day);
             }else{
@@ -255,13 +263,13 @@ var count = 0;
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
 //				console.log(isSubmit);
                     if(list[count].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
+				            tdiv.className = "title_1_success";
+			        }else{
+			            tdiv.className = "title_1";
 			        }
 				    tdiv.onclick = function(){
 				        if(list[count].isSubmit){
-				            window.location.href="../calendar_result?id="+list[count].id;
+				            window.location.href="../result?id="+list[count].id;
 				    }else{
 //				        console.log(isSubmit);
 				        window.location.href="../write?id="+list[count].id;
@@ -270,17 +278,15 @@ var count = 0;
 				}
 				var ttdiv = document.getElementById("title_2");
 				ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
-				ttdiv.onclick = function(){
+
 				    if(list[count+1].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
+				            ttdiv.className = "title_2_success";
+			        }else{
+			            ttdiv.className = "title_2";
 			        }
+			        ttdiv.onclick = function(){
 					if(list[count+1].isSubmit){
-					    ttdiv.style.border = "1px solid green";
-			            ttdiv.style.cursor = "pointer";
-			            ttdiv.style.color = "#4FEAFB";
-				        window.location.href="../calendar_result?key="+list[count+1].id;
+				        window.location.href="../result?id="+list[count+1].id;
 				    }else{
 				        window.location.href="../write?id="+list[count+1].id;
 				    }
@@ -289,20 +295,30 @@ var count = 0;
 		    	var tdiv = document.getElementById("title_1");
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
 				if(list[count].isSubmit){
-				        tdiv.style.border = "1px solid green";
-			            tdiv.style.cursor = "pointer";
-			            tdiv.style.color = "green";
+				        tdiv.className = "title_1_success";
 			    }
 				tdiv.onclick = function(){
 					if(list[count].isSubmit){
-					    tdiv.style.border = "1px solid green";
-			            tdiv.style.cursor = "pointer";
-			            tdiv.style.color = "#4FEAFB";
-				        window.location.href="../calendar_result?key="+list[count].id;
+				        window.location.href="../result?id="+list[count].id;
 				    }else{
 				        window.location.href="../write?id="+list[count].id;
 				    }
 				}
+
+
+                var ttdiv = document.getElementById("title_2");
+				if(typeof(list[count+1]) == 'undefined'){
+                        ttdiv.className = "title_2_white";
+					}else{
+					    ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
+					    if(list[count+1].isSubmit){
+				            ttdiv.className = "title_2_success";
+			            }else{
+			                ttdiv.className = "title_2";
+			            }
+					}
+
+
 		    }
 			
 		}
@@ -334,38 +350,36 @@ var count = 0;
                 	tdiv.removeChild(tdiv.firstChild);
             	}
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
-				tdiv.onclick = function(){
+
 				if(list[count].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
-			        }
+				            tdiv.className = "title_1_success";
+			    }else{
+			            tdiv.className = "title_1";
+			    }
+			    tdiv.onclick = function(){
 						if(list[count].isSubmit){
-						    tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "#4FEAFB";
-				            window.location.href="../calendar_result?key="+list[count].id;
+				            window.location.href="../result?id="+list[count].id;
 				        }else{
 				            window.location.href="../write?id="+list[count].id;
 				        }
 				}
+
 					var ttdiv = document.getElementById("title_2");
 					while(ttdiv.hasChildNodes()) //当div下还存在子节点时 循环继续
             	{
                 	ttdiv.removeChild(ttdiv.firstChild);
             	}
 					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
-					ttdiv.onclick = function(){
-					if(list[count].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
+					if(list[count+1].isSubmit){
+				        ttdiv.className = "title_2_success";
+			        }else{
+			            ttdiv.className = "title_2";
 			        }
+
+
+			        ttdiv.onclick = function(){
 						if(list[count+1].isSubmit){
-						    ttdiv.style.border = "1px solid green";
-			                ttdiv.style.cursor = "pointer";
-			                ttdiv.style.color = "#4FEAFB";
-				            window.location.href="../calendar_result?key="+list[count+1].id;
+				            window.location.href="../result?id="+list[count+1].id;
 				        }else{
 				            window.location.href="../write?id="+list[count+1].id;
 				        }
@@ -389,16 +403,13 @@ var count = 0;
             	}
 				tdiv.innerHTML = "<span>"+ list[count].title +"</span>";
 				if(list[count].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
-			        }
+				            tdiv.className = "title_1_success";
+			    }else{
+			            tdiv.className = "title_1";
+			    }
 				tdiv.onclick = function(){
 						if(list[count].isSubmit){
-						    tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "#4FEAFB";
-				            window.location.href="../calendar_result?key="+list[count].id;
+				            window.location.href="../result?id="+list[count].id;
 				        }else{
 				            window.location.href="../write?id="+list[count].id;
 				        }
@@ -408,18 +419,20 @@ var count = 0;
             	{
                 	ttdiv.removeChild(ttdiv.firstChild);
             	}
-					ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
-					ttdiv.onclick = function(){
-					if(list[count].isSubmit){
-				            tdiv.style.border = "1px solid green";
-			                tdiv.style.cursor = "pointer";
-			                tdiv.style.color = "green";
-			        }
+
+					if(typeof(list[count+1]) == 'undefined'){
+                        ttdiv.className = "title_2_white";
+					}else{
+					    ttdiv.innerHTML = "<span>"+ list[count+1].title +"</span>";
+					    if(list[count+1].isSubmit){
+				            ttdiv.className = "title_2_success";
+			            }else{
+			                ttdiv.className = "title_2";
+			            }
+					}
+			        ttdiv.onclick = function(){
 						if(list[count+1].isSubmit){
-						    ttdiv.style.border = "1px solid green";
-			                ttdiv.style.cursor = "pointer";
-			                ttdiv.style.color = "#4FEAFB";
-				            window.location.href="../calendar_result?key="+list[count+1].id;
+				            window.location.href="../result?id="+list[count+1].id;
 				        }else{
 				            window.location.href="../write?id="+list[count+1].id;
 				        }

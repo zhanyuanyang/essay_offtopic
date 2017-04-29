@@ -182,32 +182,33 @@ def write_offtopic(request):
 
 #日历页面点击绿色按钮，选择作文题目列表
 def select_green(request):
-    str_due_time = request.GET['key']
-    import datetime
-    re = datetime.datetime.strptime(str_due_time, "%Y-%m-%d")
-    due_time = re
-    user_id = request.session['user_id']
-    user = User.objects.get(user_id=user_id)
-    essay_object = Essay.objects.filter(due_time=due_time,teacher_id=user.teacher_id)
-    resultList=[]
-    for i in essay_object:
-        result = {}
-        result['id'] = i.id
-        useressay = User_Essay.objects.get(essay_id=i.id,user_id = user)
-        result['title'] = useressay.user_title
-        print i.id
+    if request.is_ajax():
+        str_due_time = request.GET['key']
+        import datetime
+        re = datetime.datetime.strptime(str_due_time, "%Y-%m-%d")
+        due_time = re
+        user_id = request.session['user_id']
+        user = User.objects.get(user_id=user_id)
+        essay_object = Essay.objects.filter(due_time=due_time,teacher_id=user.teacher_id)
+        resultList=[]
+        for i in essay_object:
+            result = {}
+            result['id'] = i.id
+            useressay = User_Essay.objects.get(essay_id=i.id,user_id = user)
+            result['title'] = useressay.user_title
+            print i.id
 
-        result['isSubmit'] = useressay.isSubmit
-        resultList.append(result)
+            result['isSubmit'] = useressay.isSubmit
+            resultList.append(result)
 
-    return render(request,'main/testShow.html',{'result':json.dumps(resultList)})
+    return HttpResponse(json.dumps(resultList))
 
 #绿色按钮列表，点击具体一个，查看结果
 def green_result(request):
     essay_id = request.GET['id']
-    user = request.session['user_id']
+    user_id = request.session['user_id']
     essay = Essay.objects.get(id=essay_id)
-
+    user = User.objects.get(user_id=user_id)
     record = User_Essay.objects.get(essay_id=essay, user_id=user)
     report = Report.objects.get(essay_id=essay, user_id=user)
 
