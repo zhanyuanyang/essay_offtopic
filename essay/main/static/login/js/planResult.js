@@ -63,25 +63,40 @@ for(var i = 0;i<errors.length;i++){
 	//修改END
 	!function(i){
 	for(var c=errors[i].index.start ; c <= errors[i].index.end ; c++){
-		document.getElementById("magic"+c).onmouseover = function(this.src){
-			rDiv.className = "replaceWord";
-			rDiv.id = "replaceWord" +i;
+		document.getElementById("magic"+c).onmouseover = function(ev){
+//			rDiv.className = "replaceWord";
+			rDiv.id = "replaceWord";
 			var x,y;
- 			x = event.clientX; 
- 			y = event.clientY; 
- 			document.getElementById("replaceWord"+i).style.left = x; 
- 			document.getElementById("replaceWord"+i).style.top = y;
-			rDiv.innerHTML = "<p>" + errors[i].error_type +"错误："+ "</p >" ;
-			if(stringArray.length>=5){
-				for(var t=0;t<3;t++){
-					rDiv.innerHTML += "<span>" + errors[i].replace_word[t] + "</span>";
+			var oEvent=ev||event;
+ 			x = oEvent.clientX;
+ 			y = oEvent.clientY;
+ 			document.getElementById("replaceWord").style.left = x+"px";
+ 			document.getElementById("replaceWord").style.top = y+"px";
+// 			alert(x+","+y);
+			document.getElementById("replaceWord").innerHTML = "<p>" + errors[i].error_type +"错误："+ "</p >" ;
+			document.getElementById("replaceWord").style.display = "block";
+			if(stringArray.length>5){
+				for(var t=0;t<5;t++){
+				    if (typeof(errors[i].replace_word[t]) == 'undefined') {
+				        document.getElementById("replaceWord").removeChild("span");
+//					    document.getElementById("replaceWord").innerHTML += "<span>" + " "+ "</span>";
+					}
+					else{
+					document.getElementById("replaceWord").innerHTML += "<span>" + errors[i].replace_word[t] + "</span>";
+					}
 				}
 			}
-			else{
-				for(var t = 0;t<stringArray.length;t++){
-					rDiv.innerHTML += "<span>" + errors[i].replace_word[t]+ "</span>";
-				}
-			}
+//			else{
+//				for(var t = 0;t<stringArray.length;t++){
+//
+//					document.getElementById("replaceWord").innerHTML += "<span>" + errors[i].replace_word[t]+ "</span>";
+//				}
+//				for(var t =stringArray.length-1;t<5;t++){
+//                    if (typeof(errors[i].replace_word[t]) == undefined) {
+//					document.getElementById("replaceWord").innerHTML += "<span>" + 11111111+ "</span>";
+//					}
+//				}
+//			}
 
 			// document.getElementById("showMagic").appendChild(rDiv);
 
@@ -95,7 +110,8 @@ for(var i = 0;i<errors.length;i++){
 	for(var c=errors[i].index.start ; c <= errors[i].index.end ; c++){
 
 			document.getElementById("magic"+c).onmouseout = function(){
-		        rDiv.className = "hide";
+		        document.getElementById("replaceWord").style.display = "none";
+		        document.getElementById("replaceWord").innerHTML = "";
 
 	}
 
@@ -165,6 +181,7 @@ function showErrorBox(){
 	json = {}
 //	var detail = {{ detail|safe }};
     json.detail = detail
+    console.log(detail);
 	var error_table = document.getElementById('error_table');
 	for(var i = 0;i<detail.length;i++){
 		var newTr = error_table.insertRow();

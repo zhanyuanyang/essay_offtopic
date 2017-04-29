@@ -12,7 +12,7 @@
 	<div id="logo"><a href="{% url 'login:main' %}"></a></div>
 	<div id="namebox">{{actual_name}}</div>
 	<div id="exitbox"><a href="{% url 'login:logout' %}"></a></div>
-
+<div id="replaceWord"></div>
 	<div class="resbody">
 		<div id="OriginalTextBox">
 			<div class="back" onclick="result_back();"></div>
@@ -22,6 +22,7 @@
 				<p>作文原文:</p>
 				<div id="formertext"></div>
                 <div id="showMagic"></div>
+				<!--<div id="replaceWord"></div>-->
 			</div>
 			<div class="resBox">
 				<span style="display:block;border-bottom:1px black solid;font-size:28px;">检测结果：</span>

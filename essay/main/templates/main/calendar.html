@@ -137,10 +137,24 @@
         show_title();
 
     }
-    function mysecondajax(y,m,a){
+    function mysecondajax(y,m,d){
 
-            var myduedate = y + "-" + m + "-" + (a+1);
-            window.location.href="../calendar_result?key="+myduedate;
+        var key = y + "-" + m + "-" + (d+1);
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                var temp = request.responseText;
+                list = JSON.parse(temp);
+                console.log(list);
+            }
+        }
+
+        request.open("GET","../green/?key="+key,false);
+        request.setRequestHeader("X-Requested-With","XMLHttpRequest");
+        request.send();//将相应的年-月-日传送到python
+        show_title();
+
 
     }
 

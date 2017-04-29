@@ -30,11 +30,11 @@
 									<option value="2013">2013</option>
 								</select>
 							</th>
-							<th>作文主题：
+							<th>作文类型：
 								<select>
-									<option value="">XXX</option>
-									<option value="">XXX</option>
-									<option value="">XXX</option>
+									<option value="">自主</option>
+									<option value="">计划</option>
+									<!--<option value="">XXX</option>-->
 								</select>
 							</th>
 							<th><input type="submit" value="筛选"></th>
@@ -50,7 +50,7 @@
 						<th>类型</th>
 						<th>题目</th>
 						<th>写作时间</th>
-						<th align=center colspan='2'>操作</th>
+						<th align=center colspan='1'>操作</th>
 					</tr>
 					{% for i in essaylist %}
 					<tr>
@@ -60,7 +60,7 @@
 						<td>{{i.3}}</td>
 						{% if i.4 %}
 							<td><a href="{% url 'login:history_result' %}?type=AT&id={{i.0}}">查看</a></td>
-                            <td><a href="{% url 'login:intermediateResults' %}?type=AT&id={{i.0}}">中间结果</a></td>
+                            <!--<td><a href="{% url 'login:intermediateResults' %}?type=AT&id={{i.0}}">中间结果</a></td>-->
 						{% else %}
 							<td><a href="{% url 'login:write_historyEssay' %}?type=PL&id={{i.0}}">写作</a></td>
 						{% endif %}

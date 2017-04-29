@@ -34,8 +34,8 @@
 					<input type="radio" name="type" class="radio" onclick="showSelection();" checked="checked" value="PL">题库
 					<input type="radio" name="type" onclick="showText();" value="AT">自选<br/>
 					<span>作文标题：</span>
-					<input type="text" class="teacherText" id="showT" name="title">
-					<select class="teacherSelect" id="showS" name="title">
+					<input type="text" class="teacherText" id="showT" name="title1">
+					<select class="teacherSelect" id="showS" name="title2">
 						{% for i in trainedTopics_list %}
 							<option>{{i.trainedTopics}}</option>
 						{% endfor %}
